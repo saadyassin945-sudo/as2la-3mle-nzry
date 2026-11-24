@@ -1,0 +1,1416 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<title>Fundamentals of Nursing Procedures QBank</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg1:#0a0f1f;--bg2:#0a0f1f;--bg3:#0a0f1f;--primary:#4fc3f7;--primary-dark:#0288d1;--accent:#ffd54f;--danger:#ef5350;--success:#66bb6a;--text:#e2e8f0;--muted:#a0aec0;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,0.4);--glow:0 0 25px rgba(79,195,247,0.12);--max-width:600px;--bg-card:rgba(255,255,255,0.06);--border-card:rgba(255,255,255,0.06)}
+body.light{--bg1:#fff;--bg2:#fff;--bg3:#fff;--bg-card:#fff;--border-card:#ccc;--text:#000;--muted:#555;--primary:#1565c0;--primary-dark:#0d47a1;--accent:#f9a825;--danger:#c62828;--success:#2e7d32;--shadow:0 2px 8px rgba(0,0,0,0.08);--glow:none;background:#fff!important;background-image:none!important;animation:none!important}
+body{font-family:"Tahoma","Segoe UI","Cairo",sans-serif;background:var(--bg1);min-height:100vh;color:var(--text);display:flex;flex-direction:column;align-items:center;padding:12px 10px;transition:background .4s,color .3s}
+.app{width:100%;max-width:var(--max-width);position:relative;z-index:1}
+.top-header{text-align:center;padding:8px 0 4px}
+.top-header h1{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--primary-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .top-header h1{background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset;color:#000;text-shadow:none}
+.top-header .sub{font-size:.9rem;color:var(--primary);font-weight:600}
+.top-header .creator{font-size:.7rem;color:var(--muted);margin-top:4px}
+.top-header .creator .name{color:var(--text);font-weight:700}
+body.light .top-header .creator .name{color:#000}
+.theme-toggle-wrap{display:flex;justify-content:flex-end;margin-bottom:6px}
+.theme-toggle{display:flex;background:var(--bg-card);border:1px solid var(--border-card);border-radius:30px;padding:3px;gap:2px}
+.theme-toggle button{background:transparent;border:none;padding:4px 14px;border-radius:30px;font-size:.8rem;color:var(--muted);cursor:pointer;transition:.3s}
+.theme-toggle button.active{background:var(--primary);color:#fff;font-weight:700}
+body.light .theme-toggle button.active{background:#1565c0;color:#fff}
+.card{background:var(--bg-card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border-card);border-radius:var(--radius);box-shadow:var(--shadow),var(--glow);padding:16px 14px;margin-bottom:14px;transition:transform .2s,background .3s,border .3s;color:var(--text)}
+body.light .card{background:#fff;border:1px solid #ccc;backdrop-filter:none}
+.card-title{margin:0 0 12px;font-size:1rem;border-inline-start:3px solid var(--primary);padding-inline-start:10px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
+.card-title i{color:var(--accent);margin-left:6px}
+.card-title-actions{display:flex;align-items:center;gap:6px}
+.card-title .select-all-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--muted);border-radius:12px;padding:2px 12px;font-size:.7rem;cursor:pointer;transition:.2s;font-weight:600}
+body.light .card-title .select-all-btn{background:#f0f0f0;border-color:#ccc;color:#333}
+.card-title .select-all-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.card-title .pdf-all-btn{background:rgba(239,83,80,0.12);border:1px solid rgba(239,83,80,0.35);color:#ff8a80;border-radius:12px;padding:2px 10px;font-size:.7rem;cursor:pointer;transition:.2s;font-weight:700;display:inline-flex;align-items:center;gap:4px}
+.card-title .pdf-all-btn i{color:inherit;margin-left:0}
+.card-title .pdf-all-btn:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
+body.light .card-title .pdf-all-btn{background:#ffebee;border-color:#ef9a9a;color:#c62828}
+body.light .card-title .pdf-all-btn:hover{background:#c62828;color:#fff}
+.action-icons{display:flex;justify-content:space-around;gap:6px;flex-wrap:wrap}
+.action-icon{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:6px 14px;border-radius:12px;border:1.5px solid transparent;background:transparent;color:var(--muted);font-size:.7rem;font-weight:600;min-width:56px}
+.action-icon .icon{font-size:1.5rem}
+.action-icon .label{font-size:.55rem}
+.action-icon.active{border-color:var(--primary);background:rgba(79,195,247,0.08)}
+body.light .action-icon.active{border-color:#1565c0;background:#e3f2fd}
+.sub-options{display:none;padding:8px 10px;margin-top:6px;background:rgba(0,0,0,0.15);border-radius:12px;border:1px solid var(--border-card);flex-wrap:wrap;gap:6px;justify-content:center}
+body.light .sub-options{background:#f5f5f5;border-color:#ccc}
+.sub-options.show{display:flex}
+.sub-options .action-btn{border:1px solid var(--border-card);background:rgba(255,255,255,0.03);border-radius:12px;padding:5px 16px;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+body.light .sub-options .action-btn{background:#fff;border-color:#ccc;color:#333}
+.sub-options .action-btn.active{border-color:var(--primary);background:rgba(79,195,247,0.12);color:var(--text)}
+body.light .sub-options .action-btn.active{border-color:#1565c0;background:#bbdefb;color:#000}
+.section-list{display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto}
+.section-item{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border-card);border-radius:10px;padding:10px 12px;cursor:pointer;transition:all .15s;font-size:.85rem;color:var(--text);gap:8px}
+body.light .section-item{border-color:#ccc}
+.section-item.active{border-color:var(--primary);background:rgba(79,195,247,0.08)}
+body.light .section-item.active{border-color:#1565c0;background:#e3f2fd}
+.section-item .sec-title{flex:1;text-align:right;font-weight:600;line-height:1.4}
+.section-item .cnt{background:rgba(255,255,255,0.06);border-radius:30px;padding:2px 10px;font-size:.72rem;color:var(--muted);font-weight:700;min-width:36px;text-align:center}
+body.light .section-item .cnt{background:#ddd;color:#333}
+.section-item .info-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:0 4px}
+.section-item .info-btn:hover{color:var(--primary)}
+.section-item .pdf-btn{background:rgba(239,83,80,0.12);border:1px solid rgba(239,83,80,0.3);color:#ff8a80;cursor:pointer;font-size:.85rem;padding:4px 8px;border-radius:8px;display:inline-flex;align-items:center;gap:4px;font-weight:700;transition:.15s}
+.section-item .pdf-btn:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
+body.light .section-item .pdf-btn{background:#ffebee;border-color:#ef9a9a;color:#c62828}
+body.light .section-item .pdf-btn:hover{background:#c62828;color:#fff}
+#section-explanation{margin-top:12px;padding:16px;background:rgba(0,0,0,0.15);border-radius:var(--radius);border:1px solid var(--border-card);display:none}
+body.light #section-explanation{background:#f5f5f5;border-color:#ccc}
+#section-explanation.show{display:block}
+.explain-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.explain-controls{display:flex;gap:6px;align-items:center}
+.explain-controls .lang-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--muted);padding:4px 10px;border-radius:20px;font-size:.7rem;cursor:pointer;font-weight:600}
+body.light .explain-controls .lang-btn{background:#fff;border-color:#ccc;color:#333}
+.explain-controls .lang-btn.active{border-color:var(--primary);background:rgba(79,195,247,0.12);color:var(--text)}
+body.light .explain-controls .lang-btn.active{border-color:#1565c0;background:#bbdefb;color:#000}
+.explain-controls .close-explain{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+.explain-controls .close-explain:hover{color:var(--danger)}
+#explain-text{font-size:.9rem;line-height:2;color:var(--text);background:rgba(0,0,0,0.1);padding:12px;border-radius:10px;min-height:60px;white-space:pre-wrap}
+#explain-text.en{direction:ltr;text-align:left}
+#explain-text.ar{direction:rtl;text-align:right}
+body.light #explain-text{background:#fff;color:#000;border:1px solid #ccc}
+.big-btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(79,195,247,0.25);transition:all .15s;position:relative;overflow:hidden;margin-bottom:14px}
+body.light .big-btn{background:#1565c0;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,0.3)}
+.big-btn.secondary{background:linear-gradient(135deg,#4a5568,#2d3748)}
+body.light .big-btn.secondary{background:#757575}
+.big-btn.warn{background:linear-gradient(135deg,var(--accent),#f57f17)}
+body.light .big-btn.warn{background:#f9a825;color:#000}
+.big-btn.danger{background:linear-gradient(135deg,#ef5350,#c62828);box-shadow:0 6px 20px rgba(239,83,80,0.25)}
+body.light .big-btn.danger{background:#c62828;color:#fff}
+.big-btn:disabled{opacity:.5;cursor:not-allowed}
+.stats-row{display:flex;justify-content:space-around;gap:8px;text-align:center;margin:6px 0}
+.stats-row .stat .num{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--primary),#81d4fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .stats-row .stat .num{background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset;color:#000}
+.stats-row .stat .lbl{font-size:.7rem;color:var(--muted)}
+.progress-stats{display:flex;align-items:center;gap:16px}
+.progress-ring{position:relative;width:70px;height:70px;flex-shrink:0}
+.progress-ring svg{transform:rotate(-90deg);width:70px;height:70px}
+.progress-ring .bg{fill:none;stroke:var(--border-card);stroke-width:6}
+body.light .progress-ring .bg{stroke:#ccc}
+.progress-ring .fg{fill:none;stroke:var(--primary);stroke-width:6;stroke-linecap:round;stroke-dasharray:176;stroke-dashoffset:176;transition:stroke-dashoffset .6s}
+body.light .progress-ring .fg{stroke:#1565c0}
+.progress-ring .center-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:var(--text)}
+.weak-link{margin-top:10px;font-size:.75rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px}
+.weak-link i{color:var(--accent)}
+.action-row-bottom{display:flex;gap:8px;margin-top:10px}
+.action-row-bottom .big-btn{flex:1;font-size:.75rem;padding:8px;margin-top:0;margin-bottom:0}
+#screen-quiz,#screen-results{display:none}
+#screen-quiz.active,#screen-results.active{display:block}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);margin-bottom:8px}
+#timer-badge{font-weight:600;font-size:.8rem;background:rgba(255,255,255,0.05);padding:2px 12px;border-radius:30px;border:1px solid var(--border-card)}
+body.light #timer-badge{background:#f0f0f0;border-color:#ccc}
+#timer-badge.warn{background:rgba(255,213,79,0.15);border-color:var(--accent);color:var(--accent)}
+#timer-badge.danger{background:rgba(239,83,80,0.2);border-color:var(--danger);color:var(--danger);animation:pulse .7s infinite alternate}
+@keyframes pulse{0%{opacity:1}100%{opacity:.5}}
+.progress-wrap{background:rgba(255,255,255,0.06);border-radius:30px;height:4px;overflow:hidden;margin-bottom:12px}
+body.light .progress-wrap{background:#ddd}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0%;transition:width .3s}
+body.light .progress-bar{background:linear-gradient(90deg,#1565c0,#f9a825)}
+.grid-toggle-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--primary);padding:3px 10px;border-radius:20px;font-size:.75rem;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-weight:600;transition:.2s}
+body.light .grid-toggle-btn{background:#e0f7fa;border-color:#b2ebf2;color:#0077a3}
+.grid-toggle-btn:hover{background:rgba(0,212,255,0.15)}
+#questions-grid-container{margin-bottom:12px;padding:12px;background:rgba(0,0,0,0.2);border-radius:12px;border:1px solid var(--border-card);display:none}
+body.light #questions-grid-container{background:#f8fafc;border-color:#ddd}
+#questions-grid-container.show{display:block}
+.grid-title{font-size:.75rem;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(36px,1fr));gap:6px;max-height:160px;overflow-y:auto;padding-right:2px}
+.grid-btn{width:100%;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.8rem;font-weight:700;border:1px solid var(--border-card);background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;transition:all .15s}
+body.light .grid-btn{background:#fff;border-color:#ccc;color:#333}
+.grid-btn:hover{border-color:var(--primary);color:var(--primary)}
+.grid-btn.current{border:2px solid var(--primary)!important;box-shadow:0 0 10px rgba(0,212,255,0.4);font-weight:900}
+.grid-btn.answered-correct{background:rgba(52,211,153,0.15)!important;border-color:var(--success)!important;color:var(--success)!important}
+body.light .grid-btn.answered-correct{background:#e8f5e9!important;border-color:#2e7d32!important;color:#2e7d32!important}
+.grid-btn.answered-wrong{background:rgba(239,83,80,0.15)!important;border-color:var(--danger)!important;color:var(--danger)!important}
+body.light .grid-btn.answered-wrong{background:#ffebee!important;border-color:#c62828!important;color:#c62828!important}
+.q-header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.q-tag{display:inline-block;background:rgba(79,195,247,0.10);color:var(--primary);font-size:.65rem;font-weight:700;padding:2px 12px;border-radius:30px;border:1px solid rgba(79,195,247,0.06)}
+body.light .q-tag{background:#e3f2fd;color:#1565c0;border-color:#bbdefb}
+.q-en{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.6;direction:ltr;text-align:left;word-wrap:break-word}
+.q-ar{font-size:.9rem;color:var(--muted);margin-bottom:14px;line-height:1.7;direction:rtl;text-align:right;word-wrap:break-word}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:center;gap:8px;border:1px solid var(--border-card);border-radius:12px;padding:10px 14px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,0.02);direction:ltr}
+body.light .option{background:#fff;border-color:#ccc}
+.option .opt-en{font-weight:600;color:var(--text);font-size:.9rem;flex:1;direction:ltr;text-align:left}
+.option .opt-ar{color:var(--muted);font-size:.8rem;direction:rtl;text-align:right;flex:1}
+.option .mark{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+.option.selected{border-color:var(--primary);background:rgba(79,195,247,0.06)}
+body.light .option.selected{border-color:#1565c0;background:#e3f2fd}
+.option.correct{border-color:var(--success);background:rgba(102,187,106,0.08)}
+body.light .option.correct{border-color:#2e7d32;background:#e8f5e9}
+.option.wrong{border-color:var(--danger);background:rgba(239,83,80,0.08)}
+body.light .option.wrong{border-color:#c62828;background:#ffebee}
+.option.disabled{cursor:default;opacity:.8}
+.feedback-box{margin-top:12px;padding:12px;border-radius:12px;font-size:.85rem;line-height:1.6}
+.feedback-box.correct{background:rgba(102,187,106,0.08);border:1px solid rgba(102,187,106,0.15);color:#a7f3d0}
+body.light .feedback-box.correct{background:#e8f5e9;border-color:#2e7d32;color:#000}
+.feedback-box.wrong{background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.15);color:#fecaca}
+body.light .feedback-box.wrong{background:#ffebee;border-color:#c62828;color:#000}
+.feedback-box .fb-title{font-weight:700;margin-bottom:4px}
+.nav-row{display:flex;gap:8px;margin-top:12px}
+.nav-row .big-btn{flex:1;margin-top:0;margin-bottom:0;font-size:.85rem;padding:10px}
+.score-circle{width:120px;height:120px;border-radius:50%;margin:8px auto 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:conic-gradient(var(--primary) calc(var(--pct)*1%),rgba(255,255,255,0.04) 0);position:relative}
+body.light .score-circle{background:conic-gradient(#1565c0 calc(var(--pct)*1%),#e0e0e0 0)}
+.score-circle::before{content:"";position:absolute;width:90px;height:90px;background:var(--bg1);backdrop-filter:blur(4px);border-radius:50%;opacity:.85}
+body.light .score-circle::before{background:#fff;opacity:.9}
+.score-circle .pct{position:relative;font-size:1.8rem;font-weight:900;color:#fff}
+body.light .score-circle .pct{color:#000}
+.score-circle .lbl{position:relative;font-size:.7rem;color:var(--muted)}
+.mistake-item{border:1px solid var(--border-card);border-radius:12px;padding:12px;margin-bottom:10px;background:rgba(255,255,255,0.02)}
+body.light .mistake-item{background:#fff;border-color:#ccc}
+.mistake-item .m-q{font-weight:700;margin-bottom:2px;direction:ltr;text-align:left}
+.mistake-item .m-you{color:var(--danger);font-size:.8rem}
+body.light .mistake-item .m-you{color:#c62828}
+.mistake-item .m-correct{color:var(--success);font-size:.8rem}
+body.light .mistake-item .m-correct{color:#2e7d32}
+.mistake-toggle{background:none;border:1px solid var(--border-card);border-radius:8px;padding:4px 12px;cursor:pointer;color:var(--text);font-size:.75rem;margin-top:6px}
+body.light .mistake-toggle{border-color:#ccc;color:#000}
+.mistake-detail{margin-top:10px;border:1px solid var(--border-card);border-radius:10px;padding:12px;background:rgba(255,255,255,0.03);direction:ltr;text-align:left}
+body.light .mistake-detail{background:#f9f9f9;border-color:#ccc}
+.mistake-detail .opt-row{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border-card)}
+body.light .mistake-detail .opt-row{border-color:#ddd}
+.mistake-detail .opt-row:last-child{border-bottom:none}
+.mistake-detail .opt-label{flex:1}
+.mistake-detail .opt-status{font-size:1rem;margin-left:8px}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);font-size:.7rem;margin-top:20px;margin-bottom:8px;opacity:.6}
+footer .name{color:var(--primary);font-weight:700}
+body.light footer .name{color:#1565c0}
+.word-en{display:inline-block;cursor:default;transition:background .15s,transform .1s;padding:1px 2px;border-radius:4px;direction:ltr}
+.word-en:active{background:rgba(79,195,247,0.15);transform:scale(.97)}
+body.light .word-en:active{background:#bbdefb}
+.word-en.speaking{background:rgba(255,213,79,0.25);box-shadow:0 0 10px rgba(255,213,79,0.2)}
+body.light .word-en.speaking{background:#fff9c4}
+.speech-hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);color:#fff;padding:6px 18px;border-radius:30px;font-size:.8rem;pointer-events:none;opacity:0;transition:opacity .3s;z-index:999;border:1px solid rgba(255,255,255,0.1)}
+body.light .speech-hint{background:#f0f0f0;color:#000;border-color:#ccc}
+.speech-hint.show{opacity:1}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);transform:scale(0);animation:rippleAnim .5s linear;pointer-events:none}
+body.light .ripple{background:rgba(0,0,0,0.1)}
+@keyframes rippleAnim{to{transform:scale(3);opacity:0}}
+@media(max-width:480px){body{padding:8px 6px}.app{max-width:100%}.top-header h1{font-size:1.5rem}.card{padding:12px 10px}.action-icon{padding:4px 8px;min-width:44px}.action-icon .icon{font-size:1.2rem}.q-en{font-size:.9rem}.q-ar{font-size:.8rem}.option{padding:8px 10px}.big-btn{font-size:.85rem;padding:10px}.score-circle{width:100px;height:100px}.score-circle::before{width:75px;height:75px}.score-circle .pct{font-size:1.5rem}.progress-ring{width:56px;height:56px}.progress-ring svg{width:56px;height:56px}}
+.tf-badge{display:inline-block;font-size:.6rem;font-weight:700;padding:1px 8px;border-radius:12px;margin-right:6px;background:rgba(79,195,247,0.15);color:var(--primary)}
+body.light .tf-badge{background:#e3f2fd;color:#1565c0}
+.q-en.new-question,.q-ar.new-question{color:#ff9800}
+body.light .q-en.new-question,body.light .q-ar.new-question{color:#ef6c00}
+.grid-btn.new-question{border:1.5px solid #ff9800!important;color:#ff9800!important;font-weight:800}
+body.light .grid-btn.new-question{border-color:#ef6c00!important;color:#ef6c00!important}
+.grid-btn.new-question.answered-correct{border-color:var(--success)!important;color:var(--success)!important}
+body.light .grid-btn.new-question.answered-correct{border-color:#2e7d32!important;color:#2e7d32!important}
+.grid-btn.new-question.answered-wrong{border-color:var(--danger)!important;color:var(--danger)!important}
+body.light .grid-btn.new-question.answered-wrong{border-color:#c62828!important;color:#c62828!important}
+
+/* PDF Modal */
+.pdf-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.pdf-modal-backdrop.show{display:flex}
+.pdf-modal{width:100%;max-width:440px;background:#111827;border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:18px 16px;color:var(--text);box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+body.light .pdf-modal{background:#fff;border-color:#ccc;color:#000}
+.pdf-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card)}
+.pdf-modal-title{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:8px;color:var(--primary)}
+.pdf-modal-title i{color:var(--danger)}
+.pdf-modal-close{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:4px}
+.pdf-modal-close:hover{color:var(--danger)}
+.pdf-modal-sub{font-size:.82rem;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.pdf-opt-group{margin-bottom:12px}
+.pdf-opt-label{font-size:.78rem;font-weight:700;margin-bottom:6px;display:block;color:var(--text)}
+.pdf-radio-list{display:flex;flex-direction:column;gap:6px}
+.pdf-radio-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border-card);border-radius:10px;cursor:pointer;font-size:.82rem;background:rgba(255,255,255,0.03)}
+body.light .pdf-radio-item{background:#f8fafc;border-color:#ddd}
+.pdf-radio-item input{accent-color:var(--primary);cursor:pointer}
+.pdf-check-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border-card);border-radius:10px;cursor:pointer;font-size:.82rem;background:rgba(255,255,255,0.03)}
+body.light .pdf-check-row{background:#f8fafc;border-color:#ddd}
+.pdf-check-row input{accent-color:var(--primary);width:16px;height:16px}
+.pdf-progress-wrap{display:none;margin:10px 0 12px;padding:10px;border-radius:10px;background:rgba(79,195,247,0.08);border:1px solid rgba(79,195,247,0.2)}
+.pdf-progress-wrap.show{display:block}
+.pdf-progress-text{font-size:.78rem;margin-bottom:6px;font-weight:700;color:var(--primary);text-align:center}
+.pdf-progress-track{height:6px;border-radius:10px;background:rgba(255,255,255,0.1);overflow:hidden}
+body.light .pdf-progress-track{background:#e0e0e0}
+.pdf-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--success));transition:width .2s}
+.pdf-actions{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.pdf-actions .big-btn{margin-bottom:0;padding:11px;font-size:.9rem}
+
+/* Print / PDF Sheet Styling */
+#print-area{display:none;background:#fff;color:#111;direction:rtl;font-family:"Tahoma","Segoe UI","Cairo",sans-serif}
+.pdf-page-box{width:794px;background:#fff;color:#111;padding:30px 36px;font-family:"Tahoma","Segoe UI","Cairo",sans-serif;direction:rtl}
+.pdf-doc-header{border:2px solid #1565c0;border-radius:12px;padding:14px 16px;margin-bottom:14px;background:#f0f7ff;text-align:center}
+.pdf-doc-header h2{font-size:18px;color:#0d47a1;margin-bottom:4px}
+.pdf-doc-header .pdf-sec-name{font-size:14px;font-weight:700;color:#1e293b;margin-bottom:4px}
+.pdf-doc-header .pdf-meta{font-size:11px;color:#475569}
+.pdf-q-card{border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;margin-bottom:10px;background:#fff;break-inside:avoid;page-break-inside:avoid}
+.pdf-q-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;font-size:10px;color:#475569}
+.pdf-q-badges{display:flex;gap:5px;align-items:center}
+.pdf-badge{padding:1px 7px;border-radius:10px;font-weight:700;font-size:10px;background:#e0f2fe;color:#0369a1}
+.pdf-badge.new{background:#fff3e0;color:#e65100}
+.pdf-q-en{direction:ltr;text-align:left;unicode-bidi:isolate;font-size:13px;font-weight:700;color:#0f172a;line-height:1.45;margin-bottom:3px}
+.pdf-q-ar{direction:rtl;text-align:right;unicode-bidi:isolate;font-size:12px;color:#334155;line-height:1.5;margin-bottom:7px}
+.pdf-opts{display:flex;flex-direction:column;gap:4px}
+.pdf-opt{display:flex;flex-direction:row;direction:ltr;align-items:flex-start;justify-content:space-between;gap:12px;padding:5px 8px;border:1px solid #e2e8f0;border-radius:7px;background:#f8fafc;font-size:11.5px;line-height:1.4}
+.pdf-opt.correct{background:#ecfdf5;border-color:#10b981;color:#065f46;font-weight:700}
+.pdf-opt-en{direction:ltr;text-align:left;unicode-bidi:isolate;flex:1}
+.pdf-opt-ar{direction:rtl;text-align:right;unicode-bidi:isolate;flex:1;color:#475569}
+.pdf-opt.correct .pdf-opt-ar{color:#065f46}
+.pdf-explain{margin-top:6px;padding:6px 9px;background:#fffbeb;border:1px solid #fde68a;border-radius:7px;font-size:11px;color:#78350f;direction:rtl;text-align:right;line-height:1.45}
+.pdf-page-footer{margin-top:10px;padding-top:6px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;font-size:10px;color:#64748b}
+.pdf-key-title{font-size:15px;font-weight:800;color:#0d47a1;margin:12px 0 8px;border-bottom:2px solid #1565c0;padding-bottom:4px}
+.pdf-key-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;direction:ltr}
+.pdf-key-item{border:1px solid #cbd5e1;border-radius:6px;padding:5px 7px;font-size:11px;background:#f8fafc;text-align:center;font-weight:700;color:#0f172a}
+
+@media print {
+  @page{size:A4;margin:12mm}
+  body{background:#fff!important;color:#000!important;padding:0!important;display:block!important}
+  .app,.pdf-modal-backdrop,#speech-hint{display:none!important}
+  #print-area{display:block!important;width:100%}
+  .pdf-page-box{width:100%;padding:0}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top-header"><h1> استعِن باللَّهِ ولا تعجِزْ ♥️ </h1><div class="sub">Fundamentals of Nursing Procedures</div><div class="creator"><i class="fas fa-user-nurse"></i> Created by <span class="name">MR. YASSIN THARWAT</span></div></div>
+<div class="theme-toggle-wrap"><div class="theme-toggle" id="themeToggle"><button class="active" data-theme="dark" onclick="setTheme('dark')"><i class="fas fa-moon"></i></button><button data-theme="light" onclick="setTheme('light')"><i class="fas fa-sun"></i></button></div></div>
+
+<div id="main-screen">
+<div class="card"><div class="card-title"><i class="fas fa-sliders-h"></i> الإجراءات</div>
+<div class="action-icons">
+<div class="action-icon active" data-target="modeOptions" onclick="toggleOptions('modeOptions')"><span class="icon">🎯</span><span class="label">المذاكرة</span></div>
+<div class="action-icon" data-target="orderOptions" onclick="toggleOptions('orderOptions')"><span class="icon">🔀</span><span class="label">الترتيب</span></div>
+<div class="action-icon" data-target="langOptions" onclick="toggleOptions('langOptions')"><span class="icon">🌐</span><span class="label">اللغة</span></div>
+<div class="action-icon" data-target="timerOptions" onclick="toggleOptions('timerOptions')"><span class="icon">⏱️</span><span class="label">المؤقت</span></div>
+</div>
+<div id="modeOptions" class="sub-options show"><button class="action-btn active" data-mode="practice" onclick="selectMode('practice')">تدريب</button><button class="action-btn" data-mode="test" onclick="selectMode('test')">اختبار</button></div>
+<div id="orderOptions" class="sub-options"><button class="action-btn active" data-order="device" onclick="selectOrder('device')">بالترتيب</button><button class="action-btn" data-order="random" onclick="selectOrder('random')">عشوائي</button></div>
+<div id="langOptions" class="sub-options"><button class="action-btn active" data-translate="yes" onclick="selectTranslate('yes')">ترجمة</button><button class="action-btn" data-translate="no" onclick="selectTranslate('no')">EN</button></div>
+<div id="timerOptions" class="sub-options"><button class="action-btn active" data-timer="0" onclick="selectTimer(0)">تثبيت</button><button class="action-btn" data-timer="5" onclick="selectTimer(5)">5s</button><button class="action-btn" data-timer="10" onclick="selectTimer(10)">10s</button></div>
+</div>
+
+<div class="card"><div class="card-title"><span><i class="fas fa-layer-group"></i> الأجزاء المختارة</span><div class="card-title-actions"><button class="pdf-all-btn" type="button" onclick="openPdfModalForSelected()" title="تحميل الأجزاء المختارة PDF"><i class="fas fa-file-pdf"></i> PDF المحدد</button><button class="select-all-btn" id="selectAllBtn" onclick="toggleAllSections()">إلغاء الكل</button></div></div><div id="section-list" class="section-list"></div>
+<div id="section-explanation"><div class="explain-header"><h3 id="explain-title"></h3><div class="explain-controls"><button class="lang-btn active" data-lang="ar" onclick="setExplainLang('ar')">🇪🇬 عربي</button><button class="lang-btn" data-lang="en" onclick="setExplainLang('en')">🇬🇧 English</button><button class="close-explain" onclick="closeExplanation()"><i class="fas fa-times"></i></button></div></div><div id="explain-text" class="ar"></div></div></div>
+
+<button class="big-btn" onclick="startQuiz()"><i class="fas fa-play"></i> ابدأ المذاكرة</button>
+
+<div class="card" id="progressCard"><div class="card-title"><i class="fas fa-chart-line"></i> تقدمك</div>
+<div class="progress-stats"><div class="progress-ring"><svg viewBox="0 0 70 70"><circle class="bg" cx="35" cy="35" r="28"/><circle class="fg" id="progressCircle" cx="35" cy="35" r="28" stroke-dashoffset="176"/></svg><div class="center-text" id="progressPercent">0<small>%</small></div></div>
+<div class="stats-row" style="flex:1;margin:0;"><div class="stat"><div class="num" id="statAttempted">0</div><div class="lbl">تم حله</div></div><div class="stat"><div class="num" id="statCorrect">0</div><div class="lbl">صح</div></div><div class="stat"><div class="num" id="statWrong">0</div><div class="lbl">غلط</div></div></div></div>
+<div class="weak-link" id="weakLink" onclick="startWeakSectionQuiz()"><i class="fas fa-lightbulb"></i> أضعف نقطة: <span id="weakSectionName">-</span> (<span id="weakSectionRate">0%</span>)</div>
+<div class="action-row-bottom"><button class="big-btn warn" onclick="reviewMistakes()"><i class="fas fa-undo-alt"></i> راجع أخطائي</button><button class="big-btn secondary" onclick="resetProgress()"><i class="fas fa-trash-alt"></i> تصفير</button></div></div>
+</div>
+
+<div id="screen-quiz">
+<div class="quiz-meta">
+  <span id="quiz-position"><i class="fas fa-question-circle"></i> 1 / 10</span>
+  <span id="timer-badge" class="hidden"><i class="fas fa-hourglass-half"></i> 30</span>
+  <span id="quiz-score"><i class="fas fa-check-circle" style="color:var(--success);"></i> 0 <i class="fas fa-times-circle" style="color:var(--danger);margin-right:6px;"></i> 0</span>
+</div>
+<div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+
+<div id="questions-grid-container">
+  <div class="grid-title">
+    <span><i class="fas fa-th"></i> انتقل مباشرة لأي سؤال:</span>
+    <span style="font-size:0.65rem; color:var(--muted);"><span style="color:var(--success);">صح</span> | <span style="color:var(--danger);">غلط</span> | <span style="color:#ff9800;">جديد</span></span>
+  </div>
+  <div class="q-grid" id="q-grid-buttons"></div>
+</div>
+
+<div class="card">
+  <div class="q-header">
+    <div class="q-tag" id="q-section-tag"><i class="fas fa-tag"></i> الجزء</div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="grid-toggle-btn" id="btn-toggle-trans" onclick="toggleQuizTranslation()"><i class="fas fa-language"></i> ترجمة</button>
+      <button class="grid-toggle-btn" id="btn-toggle-grid" onclick="toggleQuestionsGrid()"><i class="fas fa-th-large"></i> شبكة الأسئلة</button>
+    </div>
+  </div>
+  <div class="q-en" id="q-en"></div>
+  <div class="q-ar" id="q-ar"></div>
+  <div class="options" id="options"></div>
+  <div id="feedback" class="feedback-box hidden"></div>
+  <div class="nav-row">
+    <button class="big-btn secondary" id="btn-quit" onclick="quitQuiz()" style="flex:0 0 60px;"><i class="fas fa-sign-out-alt"></i></button>
+    <button class="big-btn secondary" id="btn-prev" onclick="previousQuestion()" disabled><i class="fas fa-arrow-right"></i></button>
+    <button class="big-btn" id="btn-next" onclick="nextQuestion()" disabled><i class="fas fa-arrow-left"></i> التالي</button>
+  </div>
+</div>
+</div>
+
+<div id="screen-results"><div class="card" style="text-align:center;"><div class="card-title" style="border:none;text-align:center;padding:0;"><i class="fas fa-trophy" style="color:var(--accent);"></i> نتيجتك</div><div class="score-circle" id="score-circle" style="--pct:0;"><div class="pct" id="result-pct">0%</div><div class="lbl">النسبة</div></div><div class="stats-row"><div class="stat"><div class="num" id="res-total">0</div><div class="lbl">إجمالي</div></div><div class="stat"><div class="num" id="res-correct" style="color:var(--success);">0</div><div class="lbl">صح</div></div><div class="stat"><div class="num" id="res-wrong" style="color:var(--danger);">0</div><div class="lbl">غلط</div></div></div><button class="big-btn" onclick="goHome()"><i class="fas fa-home"></i> الرئيسية</button><button class="big-btn warn hidden" id="btn-show-mistakes" onclick="showMistakesList()"><i class="fas fa-list-ul"></i> الأخطاء</button></div><div id="mistakes-list-wrap" class="card hidden"><div class="card-title"><i class="fas fa-exclamation-triangle" style="color:var(--danger);"></i> أخطائك</div><div id="mistakes-list"></div></div></div>
+
+<div id="speech-hint" class="speech-hint"><i class="fas fa-volume-up"></i> جارٍ النطق...</div>
+<footer>Created by <span class="name">MR. YASSIN THARWAT</span></footer>
+</div>
+
+<!-- PDF Export Modal -->
+<div class="pdf-modal-backdrop" id="pdfModal" onclick="if(event.target===this)closePdfModal()">
+  <div class="pdf-modal">
+    <div class="pdf-modal-header">
+      <div class="pdf-modal-title"><i class="fas fa-file-pdf"></i> تحميل الأسئلة PDF</div>
+      <button class="pdf-modal-close" type="button" onclick="closePdfModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="pdf-modal-sub" id="pdfModalTargetInfo"></div>
+
+    <div class="pdf-opt-group">
+      <span class="pdf-opt-label">اختر نمط الملف:</span>
+      <div class="pdf-radio-list">
+        <label class="pdf-radio-item">
+          <input type="radio" name="pdfAnswerMode" value="solved" checked />
+          <span>بنك أسئلة محلول (بالإجابات الصحيحة والشرح)</span>
+        </label>
+        <label class="pdf-radio-item">
+          <input type="radio" name="pdfAnswerMode" value="exam_key" />
+          <span>ورقة امتحان + مفتاح إجابة في نهاية الملف</span>
+        </label>
+        <label class="pdf-radio-item">
+          <input type="radio" name="pdfAnswerMode" value="exam_only" />
+          <span>ورقة امتحان فقط (بدون إجابات)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="pdf-opt-group">
+      <label class="pdf-check-row">
+        <input type="checkbox" id="pdfIncludeArabic" checked />
+        <span>تضمين الترجمة العربية للأسئلة والاختيارات</span>
+      </label>
+    </div>
+
+    <div class="pdf-progress-wrap" id="pdfProgressWrap">
+      <div class="pdf-progress-text" id="pdfProgressText">جارٍ تجهيز ملف PDF...</div>
+      <div class="pdf-progress-track"><div class="pdf-progress-fill" id="pdfProgressFill"></div></div>
+    </div>
+
+    <div class="pdf-actions">
+      <button class="big-btn danger" id="btnDirectPdf" type="button" onclick="generateDirectPdf()"><i class="fas fa-download"></i> تحميل ملف PDF مباشر</button>
+      <button class="big-btn secondary" id="btnPrintPdf" type="button" onclick="printAsPdf()"><i class="fas fa-print"></i> حفظ / طباعة عبر المتصفح (نصي)</button>
+    </div>
+  </div>
+</div>
+
+<!-- Print Area for Browser Save as PDF -->
+<div id="print-area"></div>
+
+<script>
+var L_PFX=["A) ","B) ","C) ","D) "];
+var AR_PFX=["أ) ","ب) ","ج) ","د) "];
+function M(en,ar,opts,c,ex,isNew){
+  var q={
+    en:en,
+    ar:ar||"",
+    options:opts.map(function(t,i){
+      var pts=t.split("|");
+      return{en:L_PFX[i]+pts[0],ar:pts[1]?(AR_PFX[i]+pts[1]):"",correct:i===c};
+    }),
+    explain_ar:ex
+  };
+  if(isNew)q.isNew=true;
+  return q;
+}
+function T(en,ar,tr,ex,isNew){
+  var q={
+    en:en,
+    ar:ar||"",
+    options:[{en:"True",ar:"صواب",correct:!!tr},{en:"False",ar:"خطأ",correct:!tr}],
+    explain_ar:ex||(tr?"صواب.":"خطأ.")
+  };
+  if(isNew)q.isNew=true;
+  return q;
+}
+
+const ORIGINAL_BANK=[
+  {
+    name:"الجزء 1: التعقيم ومكافحة العدوى (Asepsis & Infection Control)",
+    nameEn:"الجزء 1 - Unit II: Asepsis & Infection Control",
+    questions:[
+      M("Asepsis is defined as:","يُعرَّف التعقيم (Asepsis) بأنه:",["Freedom from disease-causing microorganisms|الخلو من الكائنات الدقيقة المسببة للأمراض","Presence of microorganisms in the blood|وجود كائنات دقيقة في الدم","Cleaning with soap only|التنظيف بالصابون فقط","Use of antibiotics|استخدام المضادات الحيوية"],0,"الخلو من الكائنات الدقيقة المسببة للأمراض."),
+      M("Sepsis is defined as:","يُعرَّف الإنتان (Sepsis) بأنه:",["A hand-washing method|طريقة لغسل اليدين","Freedom from germs|الخلو من الجراثيم","A type of mask|نوع من الكمامات","The presence of pathogenic organisms or their toxin in the blood or body tissue|وجود كائنات ممرضة أو سمومها في الدم أو أنسجة الجسم"],3,"وجود كائنات دقيقة ممرضة أو سمومها في الدم أو أنسجة الجسم."),
+      M("Practices intended to confine specific microorganisms to a specific area, limiting their number, growth and spread, are:","تُسمى الممارسات التي تهدف إلى حصر كائنات دقيقة معينة في منطقة محددة والحد من عددها ونموها وانتشارها:",["Isolation only|العزل فقط","Medical asepsis|التعقيم الطبي (Medical asepsis)","Sepsis|الإنتان","Surgical asepsis|التعقيم الجراحي"],1,"التعقيم الطبي (التقنية النظيفة)."),
+      M("Practices that keep an area or object free from all microorganisms are:","تُسمى الممارسات التي تحافظ على خلو منطقة أو أداة من جميع الكائنات الدقيقة:",["Clean technique|التقنية النظيفة","Medical asepsis|التعقيم الطبي","Surgical asepsis (sterile technique)|التعقيم الجراحي (التقنية المعقمة)","Hand hygiene only|نظافة اليدين فقط"],2,"التعقيم الجراحي (التقنية المعقمة)."),
+      M("In medical asepsis, 'clean' means:","في التعقيم الطبي، يعني مصطلح «نظيف» (Clean):",["Presence of microorganisms|وجود الكائنات الدقيقة","Sterile|معقم","Contaminated|ملوث","Absence of almost all microorganisms|غياب معظم الكائنات الدقيقة تقريباً"],3,"غياب معظم الكائنات الدقيقة تقريباً."),
+      M("'Dirty' (soiled, contaminated) means:","يعني مصطلح «متسخ» أو «ملوث» (Dirty / Contaminated):",["Sterile|معقم","Absence of microorganisms|غياب الكائنات الدقيقة","The presence of microorganisms|وجود الكائنات الدقيقة","Clean|نظيف"],2,"وجود الكائنات الدقيقة."),
+      T("Sepsis is the presence of pathogenic organisms or their toxin in blood or tissue.","الإنتان هو وجود كائنات ممرضة أو سمومها في الدم أو الأنسجة.",1),
+      T("Surgical asepsis keeps an object free from all microorganisms.","يحافظ التعقيم الجراحي على خلو الأداة من جميع الكائنات الدقيقة.",1),
+      T("Dirty means free from microorganisms.","يعني مصطلح «ملوث» الخلو من الكائنات الدقيقة.",0,"خطأ؛ الملوث يعني وجود الكائنات الدقيقة."),
+      T("Clean means the absence of almost all microorganisms.","يعني مصطلح «نظيف» غياب معظم الكائنات الدقيقة تقريباً.",1),
+      T("Medical asepsis keeps objects free from all microorganisms.","يحافظ التعقيم الطبي على خلو الأدوات من جميع الكائنات الدقيقة.",0,"خطأ؛ هذا ينطبق على التعقيم الجراحي، أما التعقيم الطبي فيحصر الكائنات ويحد من انتشارها."),
+      T("Sepsis means freedom from disease-causing microorganisms.","يعني الإنتان الخلو من الكائنات الدقيقة المسببة للأمراض.",0,"خطأ؛ هذا تعريف التعقيم (Asepsis)."),
+      M("Hand washing is best defined as:","أفضل تعريف لغسل اليدين هو:",["A vigorous rubbing together of all surfaces of the hands using soap or another cleansing agent|فرك قوي ومتواصل لجميع أسطح اليدين معاً باستخدام الصابون أو مادة منظفة","Using a towel only|استخدام منشفة فقط","Wearing gloves|ارتداء القفازات","Rinsing with water only|الشطف بالماء فقط"],0,"فرك قوي لجميع أسطح اليدين معاً بالصابون أو مادة منظفة."),
+      M("A purpose of hand washing is to:","من أهداف غسل اليدين:",["Dry the hands|تجفيف اليدين","Break the chain of infection|كسر سلسلة العدوى","Soften skin only|تنعيم الجلد فقط","Warm the hands|تدفئة اليدين"],1,"كسر سلسلة العدوى ومنع انتقال الميكروبات."),
+      M("Hands should be washed BEFORE:","يجب غسل اليدين قبل:",["Invasive procedures|الإجراءات التداخلية (الغازية)","Removing gloves only|نزع القفازات فقط","Handling contaminated bedpans|التعامل مع قصرية السرير الملوثة","Using the bathroom|استخدام دورة المياه"],0,"قبل الإجراءات التداخلية لحماية المريض."),
+      M("Hands should be washed AFTER:","يجب غسل اليدين بعد:",["Sitting|الجلوس","Handling contaminated items such as bedpans or wet linens|التعامل مع الأدوات الملوثة مثل قصرية السرير أو المفارش المبللة","Walking|المشي","Reading|القراءة"],1,"بعد التعامل مع الأدوات والمفارش الملوثة."),
+      M("Hands must be washed before caring for:","يجب غسل اليدين قبل تقديم الرعاية لـ:",["Any chart|أي ملف طبي","Healthy visitors|الزوار الأصحاء","Susceptible individuals such as newborns and immune-compromised patients|الأشخاص العرضة للعدوى مثل حديثي الولادة ومرضى نقص المناعة","Nobody|لا أحد"],2,"قبل رعاية الفئات الأكثر عرضة للعدوى كحديثي الولادة ومثبطي المناعة."),
+      M("Before washing, the nurse should assess the hands for:","قبل غسل اليدين، يجب على الممرض تقييم اليدين للتحقق من وجود:",["Rings only|خواتم فقط","Nail polish only|طلاء أظافر فقط","Hand size|حجم اليد","Open cuts, hangnails, broken skin or heavily soiled areas|جروح مفتوحة أو زوائد جلدية أو تشققات بالجلد أو اتساخ شديد"],3,"فحص اليدين للتحقق من وجود جروح مفتوحة أو جلد متشقق أو اتساخ شديد."),
+      M("Which item is part of the equipment for hand washing?","أي مما يلي يُعد من مستلزمات غسل اليدين؟",["Liquid antibacterial soap, nailbrush or orange stick, paper towels, warm running water|صابون سائل مضاد للبكتيريا، فرشاة أظافر أو عود خشبي، مناشف ورقية، وماء جارٍ دافئ","Sterile gloves|قفازات معقمة","Face mask|كمامة وجه","Alcohol gel|جل كحولي"],0,"صابون سائل مضاد للبكتيريا وأداة تنظيف أظافر ومناشف ورقية وماء دافئ جارٍ."),
+      T("Hand washing is unnecessary before caring for newborns.","غسل اليدين غير ضروري قبل رعاية حديثي الولادة.",0,"خطأ؛ حديثو الولادة من الفئات الأكثر عرضة للعدوى."),
+      T("Hands should be washed after using the bathroom.","يجب غسل اليدين بعد استخدام دورة المياه.",1),
+      T("Hand washing is only required after handling contaminated items.","يُلزم غسل اليدين بعد التعامل مع الأدوات الملوثة فقط.",0,"خطأ؛ يشمل أيضاً قبل الإجراءات التداخلية وقبل رعاية المرضى المعرضين للعدوى."),
+      T("Hands should be washed before serving or consuming food.","يجب غسل اليدين قبل تقديم الطعام أو تناوله.",1),
+      T("The nurse should ignore cuts on the hands before washing.","يجب على الممرض تجاهل الجروح الموجودة في اليدين قبل غسلهما.",0,"خطأ؛ يجب تقييم اليدين وتغطية أي جروح قبل العمل."),
+      T("Hand washing breaks the chain of infection between patient and nurse.","يكسر غسل اليدين سلسلة العدوى بين المريض والممرض.",1),
+      M("Why should clothing not touch the sink?","لماذا يجب ألا تلامس الملابس حوض الغسيل؟",["It is rough|لأنه خشن","The sink is hot|لأن الحوض ساخن","It wets the nurse only|لأنه يبلل الممرض فقط","The sink is considered contaminated|لأن الحوض يُعد ملوثاً"],3,"يُعد حوض الغسيل سطحاً ملوثاً قد ينقل الميكروبات إلى الزي التمريضي."),
+      M("Why is jewelry removed before hand washing?","لماذا تُنزع الحُلي (المجوهرات) قبل غسل اليدين؟",["Jewelry rusts|لأن المجوهرات تصدأ","Microorganisms may accumulate in settings of jewelry|لأن الكائنات الدقيقة قد تتراكم في فصوصها وثناياها","It interferes with soap|لأنها تتعارض مع الصابون","Jewelry is heavy|لأن المجوهرات ثقيلة"],1,"قد تتراكم الكائنات الدقيقة في فصوص المجوهرات وثناياها وتعيق التنظيف."),
+      M("Water temperature for hand washing should be:","يجب أن تكون درجة حرارة الماء لغسل اليدين:",["Very hot|ساخنة جداً","Cold|باردة","Warm|دافئة","Boiling|مغلية"],2,"يُستخدم الماء الدافئ لأنه ينظف بفعالية دون تهيج أو جفاف الجلد."),
+      M("Why are hands held lower than the elbows when wetting?","لماذا تُوضع اليدان بمستوى أدنى من المرفقين عند تبليلهما؟",["To cool hands|لتبريد اليدين","For comfort|للراحة","To save water|لتوفير الماء","Water flows from the cleaner area to the more contaminated area|لأن الماء يتدفق من المنطقة الأنظف إلى المنطقة الأكثر تلوثاً"],3,"يتدفق الماء بالجاذبية من الساعد (الأنظف) نحو اليدين (الأكثر تلوثاً)."),
+      M("How much liquid soap is used?","ما كمية الصابون السائل المستخدمة في غسل اليدين؟",["About 1 teaspoon|حوالي ملعقة صغيرة","1 liter|1 لتر","A cup|كوب","A drop|قطرة واحدة"],0,"تُستخدم كمية تعادل ملعقة صغيرة تقريباً."),
+      M("Friction should continue for at least:","يجب أن يستمر الفرك لمدة لا تقل عن:",["2 seconds|ثانيتين","5 seconds|5 ثوانٍ","20 seconds|20 ثانية","10 minutes|10 دقائق"],2,"يجب فرك اليدين لمدة 20 ثانية على الأقل."),
+      M("Why are fingernails cleaned under running water with an orange stick?","لماذا تُنظف الأظافر تحت الماء الجاري باستخدام عود خشبي مخصص؟",["For looks|للمظهر الجمالي","The area under nails has a high microorganism count|لأن المنطقة تحت الأظافر تحتوي على عدد كبير من الكائنات الدقيقة","To dry hands|لتجفيف اليدين","To shape the nails|لتشكيل الأظافر"],1,"تحتوي المنطقة تحت الأظافر على تجمع كبير من الكائنات الدقيقة."),
+      M("How should the hands be rinsed?","كيف يجب شطف اليدين؟",["With cold water only|بماء بارد فقط","Without water|بدون ماء","With water flowing toward the elbows|مع تدفق الماء نحو المرفقين","Thoroughly with water flowing toward the fingertips|جيداً مع تدفق الماء نحو أطراف الأصابع"],3,"تُشطف اليدان جيداً بحيث يتدفق الماء نحو أطراف الأصابع."),
+      M("How should hands be dried?","كيف يجب تجفيف اليدين؟",["Rub with cloth|بالفرك بقطعة قماش","Pat dry with a paper towel starting with the fingers and moving toward the forearms|بالتربيت بمنشفة ورقية بدءاً من الأصابع باتجاه الساعدين","Air dry only|بالتجفيف في الهواء فقط","Shake hands|بهز اليدين"],1,"التجفيف بالتربيت بمنشفة ورقية من الأصابع نحو الساعدين."),
+      M("The faucet should be turned off with:","يجب إغلاق صنبور الماء بواسطة:",["Foot|القدم","Bare wet hands|اليدين المبللتين العاريتين","A clean paper towel|منشفة ورقية نظيفة","Elbow only|المرفق فقط"],2,"يُغلق الصنبور بمنشفة ورقية نظيفة لتجنب إعادة تلوث اليدين."),
+      M("Why is oil-free lotion used after washing?","لماذا يُستخدم لوشن خالٍ من الزيوت بعد غسل اليدين؟",["It keeps skin soft and prevents chapping|يحافظ على نعومة الجلد ويمنع تشققه","It dries skin|يجفف الجلد","It sterilizes|يعقم اليدين","It kills germs|يقتل الجراثيم"],0,"يحافظ على نعومة الجلد ويمنع تشققه."),
+      T("Hot water is preferred for hand washing.","يُفضّل الماء الساخن جداً لغسل اليدين.",0,"خطأ؛ يُفضّل الماء الدافئ لتجنب تهيج الجلد وجفافه."),
+      T("Hands are rinsed with water flowing toward the elbows.","تُشطف اليدان مع تدفق الماء باتجاه المرفقين.",0,"خطأ؛ يتدفق الماء باتجاه أطراف الأصابع."),
+      T("Oil-free lotion helps prevent chapping.","يساعد اللوشن الخالي من الزيوت على منع تشقق الجلد.",1),
+      T("The sink is considered contaminated during hand washing.","يُعد حوض الغسيل ملوثاً أثناء غسل اليدين.",1),
+      T("The faucet should be turned off with bare wet hands.","يجب إغلاق الصنبور باليدين المبللتين العاريتين.",0,"خطأ؛ يُغلق بمنشفة ورقية نظيفة."),
+      T("Hands are dried from the forearms moving toward the fingers.","تُجفف اليدان من الساعدين باتجاه الأصابع.",0,"خطأ؛ تُجفف من الأصابع باتجاه الساعدين."),
+      T("Patting hands dry prevents chapping.","تجفيف اليدين بالتربيت يمنع تشقق الجلد.",1),
+      T("Hands should be kept lower than the elbows when wetting them.","يجب إبقاء اليدين بمستوى أدنى من المرفقين عند تبليلهما.",1),
+      T("Friction should continue for only 5 seconds.","يجب أن يستمر فرك اليدين لمدة 5 ثوانٍ فقط.",0,"خطأ؛ يستمر الفرك لمدة 20 ثانية على الأقل."),
+      T("The area under the nails has a high microorganism count.","تحتوي المنطقة تحت الأظافر على عدد كبير من الكائنات الدقيقة.",1),
+      M("The CDC recommends alcohol-based hand rubs when hands are:","توصي مراكز السيطرة على الأمراض (CDC) باستخدام فرك اليدين الكحولي عندما تكون اليدان:",["Visibly soiled|متسختين بشكل ظاهر","Contaminated with blood|ملوثتين بالدم","Dirty with proteinaceous material|متسختين بمواد بروتينية","Not visibly soiled|غير متسختين بشكل ظاهر"],3,"يُستخدم المطهر الكحولي عندما لا تكون اليدان متسختين ظاهرياً."),
+      M("Acceptable alcohol-based hand rubs contain:","تحتوي مطهرات اليدين الكحولية المقبولة على:",["10% alcohol|10% كحول","100% water|100% ماء","60% to 95% alcohol|60% إلى 95% كحول","30% alcohol|30% كحول"],2,"التركيز الفعال المقبول هو 60% إلى 95% كحول."),
+      M("Alcohol-based hand rubs are:","تتميز مطهرات اليدين الكحولية بأنها:",["More irritating than soap|أكثر تهييجاً من الصابون","Fast acting (about 15 to 20 seconds) and cause less skin irritation|سريعة المفعول (نحو 15 إلى 20 ثانية) وتسبب تهيجاً أقل للجلد","Slow acting|بطيئة المفعول","Not recommended|غير موصى بها"],1,"سريعة المفعول وتسبب تهيجاً أقل للجلد."),
+      M("Visibly soiled hands must be washed with:","يجب غسل اليدين المتسختين بشكل ظاهر بـ:",["Soap and water|الماء والصابون","Lotion|اللوشن","Gloves only|القفازات فقط","Alcohol rub only|المطهر الكحولي فقط"],0,"تُغسل بالماء والصابون لإزالة الأوساخ والمواد العضوية."),
+      M("The rub should cover all surfaces of hands and fingers up to:","يجب أن يغطي الفرك الكحولي جميع أسطح اليدين والأصابع حتى:",["The elbow|المرفق","1/2 inch above the wrist|نصف بوصة فوق الرسغ","The shoulder|الكتف","Mid forearm|منتصف الساعد"],1,"حتى نصف بوصة فوق مفصل الرسغ."),
+      M("The hands should be rubbed together until:","يجب فرك اليدين معاً بالمطهر الكحولي حتى:",["1 second|ثانية واحدة","5 minutes|5 دقائق","Wet|تبتل","They are dry, approximately 15 to 30 seconds|تجف تماماً، أي حوالي 15 إلى 30 ثانية"],3,"يستمر الفرك حتى جفاف اليدين تماماً (حوالي 15–30 ثانية)."),
+      M("Alcohol rub should be used:","يجب استخدام الفرك الكحولي:",["Before applying gloves and after removing gloves|قبل ارتداء القفازات وبعد نزعها","Only after meals|بعد الوجبات فقط","Only at home|في المنزل فقط","Never with gloves|لا يُستخدم مع القفازات مطلقاً"],0,"قبل ارتداء القفازات وبعد نزعها."),
+      M("The alcohol-based rub is used:","يُستخدم الفرك الكحولي لليدين:",["Only before eating|قبل الأكل فقط","Never|أبداً","After contact with medical equipment used during patient care|بعد ملامسة المعدات الطبية المستخدمة في رعاية المريض","Only in surgery|في الجراحة فقط"],2,"بعد ملامسة الأجهزة والمعدات الطبية في محيط المريض."),
+      T("Alcohol rub causes more skin irritation than hand washing.","يسبب الفرك الكحولي تهيجاً للجلد أكثر من غسل اليدين.",0,"خطأ؛ يسبب تهيجاً أقل للجلد."),
+      T("Alcohol-based hand rub is recommended when hands are not visibly soiled.","يُوصى باستخدام المطهر الكحولي لليدين عندما لا تكونان متسختين ظاهرياً.",1),
+      T("Acceptable hand rubs contain 60% to 95% alcohol.","تحتوي مطهرات اليدين المقبولة على 60% إلى 95% كحول.",1),
+      T("Alcohol-based hand rub can replace soap and water when hands are visibly soiled with blood.","يمكن للمطهر الكحولي أن يحل محل الماء والصابون عندما تكون اليدان ملوثتين بالدم بشكل ظاهر.",0,"خطأ؛ يجب غسلهما بالماء والصابون عند وجود تلوث ظاهر بالدم أو سوائل الجسم."),
+      T("Rings and watch need not be removed before alcohol hand rub.","لا يلزم نزع الخواتم والساعة قبل استخدام المطهر الكحولي لليدين.",0,"خطأ؛ تُنزع الخواتم أو تُرفع الساعة لتغطية الرسغ والأصابع بالكامل."),
+      T("The hands are rubbed together until dry.","تُفرك اليدان معاً حتى تجفا تماماً.",1),
+      M("Masks are worn to reduce the transmission of organisms by:","تُرتدى الكمامات الطبية للحد من انتقال الكائنات الدقيقة عن طريق:",["Droplet and airborne routes and splatters of body substances|الرذاذ والهواء وتناثر سوائل الجسم","Water only|الماء فقط","Contact only|التلامس فقط","Food|الطعام"],0,"للوقاية من انتقال العدوى بالرذاذ والهواء ورذاذ سوائل الجسم."),
+      M("The mask must cover:","يجب أن تغطي الكمامة:",["The mouth only|الفم فقط","The nose only|الأنف فقط","Both the nose and the mouth|كلاً من الأنف والفم","The chin only|الذقن فقط"],2,"يجب أن تغطي الكمامة كلاً من الأنف والفم بإحكام."),
+      M("Which edge of the mask contains the metal strip?","أي حافة من الكمامة تحتوي على الشريط المعدني؟",["The bottom edge|الحافة السفلية","The top edge|الحافة العلوية","The sides|الجوانب","Neither|لا توجد بها حافة معدنية"],1,"الحافة العلوية لتثبيتها على جسر الأنف."),
+      M("If the nurse wears glasses, the upper edge of the mask should be fitted:","إذا كان الممرض يرتدي نظارة طبية، فيجب تثبيت الحافة العلوية للكمامة:",["On the forehead|على الجبهة","Over the glasses|فوق النظارة","Away from the nose|بعيداً عن الأنف","Under the glasses|تحت حافة النظارة"],3,"تحت النظارة لتقليل تكثف الضباب عليها."),
+      M("A mask should be changed when:","يجب تغيير الكمامة عندما:",["It is dry|تكون جافة","It is white|تكون بيضاء","It becomes wet|تبتل (تصبح رطبة)","It is new|تكون جديدة"],2,"عندما تصبح رطبة لأنها تفقد كفاءتها الوقائية."),
+      M("A used mask should:","الكمامة المستعملة يجب:",["Be worn again|إعادة ارتدائها","Be put in a pocket|وضعها في الجيب","Be hung on the neck|تعليقها على الرقبة","Not be left hanging around the neck|عدم تركها معلقة حول الرقبة"],3,"لا تُترك معلقة حول الرقبة لأنها ملوثة."),
+      M("The mask should be removed:","يجب نزع الكمامة:",["In the corridor|في الممر","At the doorway to the patient's room|عند مدخل (باب) غرفة المريض","Inside beside the patient|بالداخل بجانب المريض","At the nurse station|عند محطة التمريض"],1,"عند باب غرفة المريض."),
+      M("When removing a mask with strings, first untie:","عند نزع كمامة ذات أربطة، يُفك أولاً:",["The lower strings|الأربطة السفلية","The upper strings|الأربطة العلوية","The metal strip|الشريط المعدني","The side loops|الحلقات الجانبية"],0,"تُفك الأربطة السفلية أولاً لمنع سقوط الكمامة الملوثة على الصدر."),
+      M("Why should the front of the mask not be touched during removal?","لماذا يجب عدم لمس الجزء الأمامي من الكمامة أثناء نزعها؟",["It is fragile|لأنه هش","It is contaminated|لأنه ملوث","It is wet|لأنه مبلل","It is hot|لأنه ساخن"],1,"الجزء الأمامي للكمامة ملوث بالميكروبات المحتجزة."),
+      M("After removing and discarding the mask, the nurse should:","بعد نزع الكمامة والتخلص منها، يجب على الممرض:",["Skip hand hygiene|تجاهل نظافة اليدين","Wear a new one on the neck|ارتداء واحدة جديدة على الرقبة","Reuse it|إعادة استخدامها","Perform proper hand hygiene|تطبيق نظافة (غسل) اليدين الصحيحة"],3,"إجراء نظافة اليدين فوراً بعد نزع الكمامة."),
+      T("The upper strings are untied first when removing the mask.","تُفك الأربطة العلوية أولاً عند نزع الكمامة.",0,"خطأ؛ تُفك الأربطة السفلية أولاً لمنع سقوطها على الصدر."),
+      T("Masks are removed inside the patient's room beside the bed.","تُنزع الكمامات داخل غرفة المريض بجانب السرير.",0,"خطأ؛ تُنزع عند باب غرفة المريض."),
+      T("The lower strings are untied first when removing the mask.","تُفك الأربطة السفلية أولاً عند نزع الكمامة.",1),
+      T("A mask can be worn until it is torn even if wet.","يمكن ارتداء الكمامة حتى تتمزق ولو كانت مبللة.",0,"خطأ؛ تصبح غير فعالة عندما تبتل ويجب استبدالها."),
+      T("The front of the mask is contaminated after use.","يُعد الجزء الأمامي من الكمامة ملوثاً بعد الاستخدام.",1),
+      T("A used mask may be left hanging around the neck.","يجوز ترك الكمامة المستعملة معلقة حول الرقبة.",0,"خطأ؛ لا يجوز تركها معلقة حول الرقبة."),
+      T("A mask must cover both the nose and the mouth to be effective.","يجب أن تغطي الكمامة كلاً من الأنف والفم لتكون فعالة.",1),
+      T("Metal strip is adjusted firmly over the bridge of the nose.","يُضبط الشريط المعدني بإحكام فوق جسر الأنف.",1),
+      M("A sterile gown allows the nurse to:","يتيح الرداء الطبي المعقم للممرض:",["Work close to a sterile field and handle sterile objects freely|العمل بالقرب من المجال المعقم والتعامل مع الأدوات المعقمة بحرية","Avoid gloves|تجنب ارتداء القفازات","Avoid hand washing|تجنب غسل اليدين","Avoid masks|تجنب الكمامات"],0,"العمل بالقرب من المجال المعقم والتعامل مع الأدوات المعقمة بحرية."),
+      M("Another purpose of the gown is to protect patients from microorganisms on the nurse's:","ومن أغراض ارتداء الرداء المعقم أيضاً حماية المرضى من الكائنات الدقيقة الموجودة على:",["Hair only|الشعر فقط","Eyes only|العينين فقط","Hands, arms and clothing|اليدين والذراعين والملابس","Shoes only|الحذاء فقط"],2,"حماية المريض من الميكروبات الموجودة على يدي الممرض وذراعيه وملابسه."),
+      M("The nurse grasps the sterile gown at the crease near the:","يمسك الممرض الرداء المعقم من الثنية القريبة من:",["Waist|الخصر","Cuff|الكم","Neck|العنق (الرقبة)","Hem|الحاشية السفلية"],2,"يُمسك من الثنية القريبة من منطقة العنق."),
+      M("The gown should be unfolded:","يجب فرد الرداء المعقم:",["On the floor|على الأرض","On the bed|على السرير","Against the uniform|ملاصقاً للزي الرسمي","Away from the nurse, without touching anything including the uniform|بعيداً عن الممرض دون ملامسة أي شيء بما في ذلك الزي التمريضي"],3,"يُفرد بعيداً عن الممرض دون ملامسة أي شيء بما في ذلك الزي."),
+      M("Why must the outer surface not touch unsterile objects?","لماذا يجب ألا يلامس السطح الخارجي للرداء المعقم أجساماً غير معقمة؟",["The gown becomes unsterile|لأن الرداء يصبح غير معقم","It would wrinkle|لأنه سيتجعد","It would fall|لأنه سيسقط","It would be wet|لأنه سيبتل"],0,"ملامسة أي جسم غير معقم تجعل الرداء غير معقم."),
+      M("Who grasps the neck ties and waist tie?","من يمسك ويربط أربطة العنق والخصر للرداء المعقم؟",["The nurse alone|الممرض بمفرده","A coworker|زميل مساعد","A visitor|أحد الزوار","The patient|المريض"],1,"يساعد زميل في ربط أربطة العنق والخصر."),
+      M("If a soiled gown is removed, it should be:","عند نزع رداء ملوث، يجب:",["Folded|طيه","Reused|إعادة استخدامه","Shaken|نفضه","Turned inside out|قلبه من الداخل إلى الخارج"],3,"يُقلب من الداخل إلى الخارج لحصر التلوث بالداخل."),
+      T("The gown is grasped at the crease near the neck and permitted to unfold freely.","يُمسك الرداء من الثنية القريبة من العنق ويُسمح له بالانفراد بحرية.",1),
+      T("A soiled gown is removed by folding it outward.","يُنزع الرداء الملوث بطيه للخارج.",0,"خطأ؛ يُنزع بقلبه من الداخل إلى الخارج."),
+      T("A sterile gown replaces hand washing.","يُغني الرداء المعقم عن غسل اليدين.",0,"خطأ؛ يجب غسل اليدين قبل ارتداء الرداء المعقم."),
+      T("A coworker helps secure the neck and waist ties.","يساعد زميل في تثبيت أربطة العنق والخصر.",1),
+      T("A sterile gown enables the nurse to work close to a sterile field.","يمكّن الرداء المعقم الممرض من العمل بالقرب من المجال المعقم.",1),
+      T("The gown may touch the uniform while unfolding.","يجوز أن يلامس الرداء الزي التمريضي أثناء فرده.",0,"خطأ؛ يجب ألا يلامس الزي أو أي جسم غير معقم."),
+      M("Sterile gloves are worn to:","تُرتدى القفازات المعقمة لـ:",["Avoid hand washing|تجنب غسل اليدين","Warm the hands|تدفئة اليدين","Maintain sterility of equipment and protect a patient's wound|الحفاظ على تعقيم الأدوات وحماية جرح المريض","Replace gown|تحل محل الرداء"],2,"للحفاظ على تعقيم الأدوات وحماية جروح المريض."),
+      M("They protect patients at risk, such as those with:","تحمي القفازات المعقمة المرضى المعرضين للخطر، مثل المصابين بـ:",["Open wounds|جروح مفتوحة","Normal skin|جلد سليم","Headache|صداع","Fever only|حمى فقط"],0,"المرضى ذوو الجروح المفتوحة."),
+      M("The package of gloves is placed:","تُوضع عبوة القفازات المعقمة:",["On the floor|على الأرض","Outside the field|خارج المجال","On the center of the sterile field|في منتصف المجال المعقم","On the bed|على السرير"],2,"في منتصف المجال المعقم."),
+      M("Why should moisture on the surface be avoided?","لماذا يجب تجنب وجود رطوبة على سطح العمل؟",["It could contaminate the gloves|لأنها قد تلوث القفازات","It warms them|لأنها تدفئها","It wrinkles them|لأنها تجعدها","It tears them|لأنها تمزقها"],0,"قد تؤدي الرطوبة إلى نفاذ الميكروبات وتلوث القفازات."),
+      M("The glove for the dominant hand is grasped by:","يُمسك قفاز اليد المهيمنة من:",["Anywhere|أي موضع","The cuff with thumb and first finger of the non-dominant hand, touching the inside of the cuff only|الحاشية المطوية (الكم) بإبهام وسبابة اليد غير المهيمنة مع لمس الداخل فقط","The fingers|الأصابع","The palm|راحة اليد"],1,"من الكم المطوي مع لمس السطح الداخلي للكم فقط."),
+      M("Why is the inside of the cuff touched?","لماذا يُلمس الجانب الداخلي فقط من حاشية (كم) القفاز؟",["It is easier|لأنه أسهل","The inside is sterile|لأن الداخل معقم","It is dry|لأنه جاف","The hands are not sterile|لأن اليدين غير معقمتين"],3,"لأن اليدين العاريتين غير معقمتين."),
+      M("The thumb of the inserted hand is kept against the palm to:","يُبقى إبهام اليد المُدخَلة ملاصقاً لراحة اليد من أجل:",["Reduce contamination of the outside of the glove|تقليل تلوث السطح الخارجي للقفاز","Warm the hand|تدفئة اليد","Save time|توفير الوقت","Stretch the glove|تمديد القفاز"],0,"لتقليل احتمالية تلوث السطح الخارجي المعقم للقفاز."),
+      M("The second glove is picked up with:","يُلتقط القفاز الثاني بواسطة:",["The bare hand|اليد العارية","The sterile gloved hand under the cuff|اليد المرتدية للقفاز المعقم تحت طية الكم","A forceps only|ملقط فقط","Teeth|الأسنان"],1,"بأصابع اليد المعقمة المُقفّزة تحت طية الكم."),
+      M("To remove gloves:","لنزع القفازات المستعملة:",["Rinse them|تُشطف","Pull the fingers|تُسحب من الأصابع","Turn them inside out|تُقلب من الداخل إلى الخارج","Cut them|تُقص"],2,"تُقلب من الداخل إلى الخارج."),
+      M("The outside of used gloves:","السطح الخارجي للقفازات المستعملة:",["Is clean|نظيف","Is sterile|معقم","Is touched first|يُلمس أولاً","Should not be touched with bare hands|يجب عدم لمسه باليدين العاريتين"],3,"لا تُلمس باليدين العاريتين لأنها ملوثة."),
+      T("Gloves are removed by turning them inside out.","تُنزع القفازات بقلبها من الداخل إلى الخارج.",1),
+      T("Sterile gloves are put on with bare hands touching the outside.","تُرتدى القفازات المعقمة بملامسة السطح الخارجي باليدين العاريتين.",0,"خطأ؛ تُلمس حاشية الكم من الداخل فقط باليد العارية."),
+      T("The package of gloves is placed on the center of the sterile field.","تُوضع عبوة القفازات في منتصف المجال المعقم.",1),
+      T("Used gloves may be removed by touching the outside with bare hands.","يجوز نزع القفازات المستعملة بملامسة سطحها الخارجي باليدين العاريتين.",0,"خطأ؛ لا يُلمس السطح الخارجي الملوث باليد العارية."),
+      T("Moisture on the sterile field surface has no effect on the gloves.","لا تؤثر الرطوبة الموجودة على سطح المجال المعقم في القفازات.",0,"خطأ؛ قد تلوث القفازات."),
+      T("The second glove is picked up with the sterile gloved fingers under the cuff.","يُلتقط القفاز الثاني بأصابع اليد المرتدية للقفاز المعقم من تحت طية الكم.",1),
+      T("The bare hand may pick up the second glove.","يجوز التقاط القفاز الثاني باليد العارية.",0,"خطأ؛ يُلتقط باليد المعقمة المرتدية للقفاز الأول."),
+      T("Sterile gloves enable the nurse to handle sterile objects freely.","تمكّن القفازات المعقمة الممرض من التعامل مع الأدوات المعقمة بحرية.",1),
+      T("Asepsis is the presence of pathogenic organisms or their toxin in the blood or body tissue.","التعقيم (Asepsis) هو وجود كائنات ممرضة أو سمومها في الدم أو أنسجة الجسم.",0,"خطأ؛ هذا تعريف الإنتان (Sepsis)، أما التعقيم (Asepsis) فهو الخلو من الكائنات المسببة للمرض.",1),
+      T("The main aim of wearing gloves is to prevent patients at risk (those with open wounds) from becoming infected by microorganisms on the nurse's hands.","الهدف الرئيسي من ارتداء القفازات هو وقاية المرضى المعرضين للخطر (ذوي الجروح المفتوحة) من الإصابة بعدوى الكائنات الدقيقة الموجودة على يدي الممرض.",1,"صح؛ لحماية المرضى ذوي الجروح المفتوحة من ميكروبات يد الممرض.",1),
+      M("During hand washing procedure continue this friction motion for at least ............... second.","أثناء إجراء غسل اليدين، استمر في حركة الفرك هذه لمدة لا تقل عن ............... ثانية.",["10 second.|10 ثوانٍ.","20 second.|20 ثانية.","30 second.|30 ثانية."],1,"يجب استمرار الفرك لمدة 20 ثانية على الأقل.",1),
+      M(".................. is worn during procedures when the nurse's uniform is likely to become soiled, it is can be disposable, plastic, water resistance, or sterile.","يُرتدى .................. أثناء الإجراءات التي يُحتمل فيها تلوث زي الممرض، ويمكن أن يكون أحادي الاستخدام أو بلاستيكياً أو مقاوماً للماء أو معقماً.",["Mask|الكمامة","Gowns|الأردية الواقية (Gowns)","Gloves|القفازات"],1,"الأردية الواقية (Gowns) تُرتدى لحماية الزي التمريضي من التلوث.",1)
+    ]
+  },
+  {
+    name:"الجزء 2: العلامات الحيوية (Vital Signs)",
+    nameEn:"الجزء 2 - Vital Signs (Temp, Pulse, Resp, BP)",
+    questions:[
+      M("Which is the most commonly used site for measuring temperature?","ما الموضع الأكثر شيوعاً لقياس درجة حرارة الجسم؟",["Sublingual (oral)|تحت اللسان (عن طريق الفم)","Tympanic|عن طريق الأذن (غشاء الطبل)","Rectal|عن طريق المستقيم (الشرج)","Axillary|عن طريق الإبط"],0,"يُعد الموضع الفموي (تحت اللسان) الأكثر استخداماً."),
+      M("Which patient is at higher risk for temperature alterations?","أي مريض يكون أكثر عرضة لحدوث اضطرابات في درجة الحرارة؟",["A visiting relative|قريب زائر","A patient with normal counts|مريض تعداد دمه طبيعي","A patient with leukocyte count below 5000 or above 12,000|مريض تعداد كريات الدم البيضاء لديه أقل من 5,000 أو أكثر من 12,000","A patient sleeping|مريض نائم"],2,"انخفاض أو ارتفاع كريات الدم البيضاء (<5,000 أو >12,000) يزيد خطر اضطراب الحرارة."),
+      M("A patient just drank hot tea. Before taking an oral temperature, the nurse should wait:","شرب مريض للتو شاياً ساخناً. قبل قياس الحرارة عن طريق الفم، يجب على الممرض الانتظار لمدة:",["No waiting|دون انتظار","1 minute|دقيقة واحدة","2 hours|ساعتين","15 to 30 minutes|15 إلى 30 دقيقة"],3,"الانتظار من 15 إلى 30 دقيقة لضمان دقة القراءة."),
+      M("Why wait after smoking before an oral temperature?","لماذا يجب الانتظار بعد التدخين قبل قياس درجة الحرارة عن طريق الفم؟",["Smoking cools the thermometer|لأن التدخين يبرّد الترمومتر","Smoking alters the reading|لأن التدخين يغيّر القراءة","It is a hospital rule only|لأنه مجرد نظام بالمستشفى","Smoke contaminates the nurse|لأن الدخان يلوث الممرض"],1,"التدخين يغيّر حرارة الفم ويؤثر في دقة القراءة."),
+      M("The oral thermometer is left in place for:","يُترك الترمومتر الفموي في موضعه لمدة:",["3 minutes|3 دقائق","30 seconds|30 ثانية","1 hour|ساعة واحدة","10 minutes|10 دقائق"],0,"يُترك في الفم لمدة 3 دقائق."),
+      M("The axillary thermometer is left in place for:","يُترك الترمومتر الإبطي في موضعه لمدة:",["1 minute|دقيقة واحدة","3 seconds|3 ثوانٍ","5 minutes|5 دقائق","20 minutes|20 دقيقة"],2,"يُترك في الإبط لمدة 5 دقائق."),
+      M("The rectal thermometer is left in place for:","يُترك الترمومتر المستقيمي (الشرجي) في موضعه لمدة:",["10 minutes|10 دقائق","2 minutes|دقيقتان","30 seconds|30 ثانية","5 minutes|5 دقائق"],1,"يُترك في المستقيم لمدة دقيقتين."),
+      M("Before taking temperature with a mercury thermometer, the mercury should be shaken down below:","قبل قياس الحرارة بالترمومتر الزئبقي، يجب رج عمود الزئبق لينخفض دون:",["40°C|40° مئوية","38°C|38° مئوية","42°C|42° مئوية","35°C|35° مئوية"],3,"ينخفض الزئبق دون 35° مئوية."),
+      M("The thermometer is wiped after use from:","يُمسح الترمومتر بعد الاستخدام من:",["The fingers toward the bulb|الأصابع (الساق) باتجاه البصلة (الطرف)","Any direction|أي اتجاه","The bulb toward the fingers|البصلة باتجاه الأصابع","Side to side|من جانب لآخر"],0,"يُمسح بعد الاستخدام من الطرف الممسوك بالأصابع نحو بصلة الترمومتر (من الأنظف إلى الأكثر تلوثاً)."),
+      M("The oral route is contraindicated for a patient who:","يُمنع القياس عن طريق الفم للمريض الذي:",["Is eating nothing|لا يتناول شيئاً","May bite the thermometer, such as a confused or convulsing patient|قد يعض الترمومتر، مثل المريض المشوش ذهنياً أو المصاب باختلاجات","Is calm and alert|يكون هادئاً ويقظاً","Is an adult|يكون بالغاً"],1,"يُمنع للمرضى المشوشين أو المصابين باختلاجات خشية عض الترمومتر وكسره."),
+      T("Axillary temperature takes 2 minutes.","يستغرق قياس الحرارة الإبطية دقيقتين.",0,"خطأ؛ يستغرق 5 دقائق."),
+      T("The thermometer is wiped before use from fingers toward the bulb.","يُمسح الترمومتر قبل الاستخدام من الأصابع باتجاه البصلة.",0,"خطأ؛ قبل الاستخدام يُمسح من البصلة نحو الأصابع."),
+      T("Oral temperature is contraindicated if the patient may bite the thermometer.","يُمنع قياس الحرارة الفموية إذا كان من المحتمل أن يعض المريض الترمومتر.",1),
+      T("Mercury is shaken down below 35°C before use.","يُرج الزئبق لينخفض دون 35° مئوية قبل الاستخدام.",1),
+      T("Rectal temperature requires 5 minutes.","يتطلب قياس الحرارة المستقيمي (الشرجي) 5 دقائق.",0,"خطأ؛ يتطلب دقيقتين."),
+      T("The nurse waits 15 to 30 minutes after hot or cold food before taking oral temperature.","ينتظر الممرض من 15 إلى 30 دقيقة بعد تناول الطعام أو المشروبات الساخنة أو الباردة قبل قياس الحرارة الفموية.",1),
+      T("Sublingual is the most commonly used site for temperature.","يُعد الموضع تحت اللسان الأكثر استخداماً لقياس درجة الحرارة.",1),
+      T("Oral temperature is taken for 10 minutes.","تُقاس درجة الحرارة الفموية لمدة 10 دقائق.",0,"خطأ؛ تُقاس لمدة 3 دقائق."),
+      M("The best position for rectal temperature is:","أفضل وضعية للمريض لقياس الحرارة عن طريق المستقيم هي:",["Sitting upright|الجلوس منتصباً","Prone only|الاستلقاء على البطن فقط","Standing|الوقوف","Sims' position|وضعية سيمز (الاستلقاء الجانبي)"],3,"وضعية سيمز (Sims' position)."),
+      M("In adults, the thermometer is lubricated and inserted:","لدى البالغين، يُزلق الترمومتر ويُدخل لمسافة:",["2.5 to 4 cm|2.5 إلى 4 سم","10 cm|10 سم","8 cm|8 سم","1 cm|1 سم"],0,"يُدخل لمسافة 2.5 إلى 4 سم لدى البالغين."),
+      M("In infants the lubricated part is inserted about:","لدى الرضع، يُدخل الجزء المزلق من الترمومتر لمسافة نحو:",["3 cm|3 سم","10 cm|10 سم","1 to 1.5 cm|1 إلى 1.5 سم","5 cm|5 سم"],2,"يُدخل لمسافة 1 إلى 1.5 سم لدى الرضع."),
+      M("The thermometer is inserted about 1.5 inch toward:","يُدخل الترمومتر الشرجي لمسافة نحو 1.5 بوصة باتجاه:",["The hip|الورك","The leg|الساق","The spine|العمود الفقري","The umbilicus|السُرّة"],3,"يُوجّه نحو السُرّة لتفادي جدار المستقيم."),
+      M("Why is the thermometer lubricated before rectal insertion?","لماذا يُزلق (يُدهن بمادة مزلقة) الترمومتر قبل إدخاله في المستقيم؟",["To reduce friction and trauma|لتقليل الاحتكاك والرضح (الإصابة)","To clean it|لتنظيفه","To warm it|لتدفئته","To cool it|لتبريده"],0,"لتقليل الاحتكاك ومنع إصابة الغشاء المخاطي للمستقيم."),
+      M("The nurse should hold the rectal thermometer in place:","يجب على الممرض إمساك الترمومتر المستقيمي وتثبيته في موضعه:",["Only at the start|عند البداية فقط","Throughout the measurement|طوال مدة القياس","Never|لا يمسكه أبداً","After removal|بعد الإخراج"],1,"يُمسك طوال مدة القياس لمنع انزلاقه أو كسره."),
+      M("Why is the patient covered during rectal measurement?","لماذا يُغطى المريض أثناء قياس الحرارة عن طريق المستقيم؟",["For sterility|للتعقيم","To prevent pain|لمنع الألم","To hide the thermometer|لإخفاء الترمومتر","To maintain privacy and warmth|للحفاظ على الخصوصية والدفء"],3,"للحفاظ على خصوصية المريض ودفء جسمه."),
+      T("The rectal thermometer is inserted 2.5 to 4 cm in adults and 1 to 1.5 cm in infants.","يُدخل الترمومتر الشرجي لمسافة 2.5 إلى 4 سم لدى البالغين و1 إلى 1.5 سم لدى الرضع.",1),
+      T("The rectal thermometer is inserted without lubrication to maintain accuracy.","يُدخل الترمومتر الشرجي دون تزليق للحفاظ على دقة القياس.",0,"خطأ؛ يجب تزليقه بمزلق مائي."),
+      T("Sims' position is used for rectal temperature.","تُستخدم وضعية سيمز لقياس درجة الحرارة عن طريق المستقيم.",1),
+      T("The depth of insertion is the same for adults and infants.","عمق إدخال الترمومتر الشرجي متساوٍ لدى البالغين والرضع.",0,"خطأ؛ يختلف العمق: 2.5–4 سم للبالغين و1–1.5 سم للرضع."),
+      T("The thermometer is directed toward the spine when inserted rectally.","يُوجّه الترمومتر نحو العمود الفقري عند إدخاله في المستقيم.",0,"خطأ؛ يُوجّه نحو السُرّة."),
+      T("The nurse holds the thermometer in place during rectal measurement.","يمسك الممرض الترمومتر في موضعه طوال مدة القياس الشرجي.",1),
+      M("The pulse is:","النبض هو:",["A wave of blood created by contraction of the left ventricle of the heart|موجة الدم الناتجة عن انقباض البطين الأيسر للقلب","The heart sound only|صوت القلب فقط","A blood pressure reading|قراءة ضغط الدم","Respiration rate|معدل التنفس"],0,"موجة الدم داخل الشريان الناتجة عن انقباض البطين الأيسر."),
+      M("The most commonly used site for assessing pulse is the:","الموضع الأكثر استخداماً لتقييم النبض هو:",["Femoral artery|الشريان الفخذي","Apex only|قمة القلب فقط","Radial artery|الشريان الكعبري","Popliteal artery|الشريان المأبضي"],2,"الشريان الكعبري عند الرسغ."),
+      M("In a regular radial pulse, the nurse counts for:","في النبض الكعبري المنتظم، يعدّ الممرض النبضات لمدة:",["5 seconds|5 ثوانٍ","30 seconds and multiplies by 2|30 ثانية ويضرب الناتج في 2","10 minutes|10 دقائق","1 second|ثانية واحدة"],1,"يُعد لمدة 30 ثانية ويُضرب في 2."),
+      M("If the pulse is irregular, count for:","إذا كان النبض غير منتظم، يُعدّ لمدة:",["30 seconds|30 ثانية","15 seconds|15 ثانية","5 seconds|5 ثوانٍ","One full minute|دقيقة كاملة"],3,"يُعد النبض غير المنتظم لمدة دقيقة كاملة."),
+      M("Which fingers are used for palpating the radial pulse?","أي أصابع تُستخدم لجس النبض الكعبري؟",["The index, middle and ring fingers|السبابة والوسطى والبنصر","Little finger only|الخنصر فقط","The thumb|الإبهام","Fist|قبضة اليد"],0,"تُستخدم أطراف أصابع السبابة والوسطى والبنصر."),
+      M("Why is the thumb not used for palpating pulse?","لماذا لا يُستخدم الإبهام في جس النبض؟",["It is weak|لأنه ضعيف","It has its own pulse|لأن له نبضاً شريانياً خاصاً به","It is dirty|لأنه متسخ","It is too small|لأنه صغير جداً"],1,"لأن الإبهام يحتوي على شريان ذي نبض خاص قد يختلط بنبض المريض."),
+      M("A patient with irregular rhythm has a pulse rate counted for 30 seconds only. This is:","مريض لديه نبض غير منتظم تم عدّ نبضه لمدة 30 ثانية فقط؛ هذا الإجراء:",["Correct|صحيح","Not important|غير مهم","Incorrect; count a full minute|غير صحيح؛ يجب العدّ لدقيقة كاملة","Always correct|صحيح دائماً"],2,"غير صحيح؛ يجب عدّ النبض غير المنتظم لمدة دقيقة كاملة."),
+      T("The femoral artery is the most common routine pulse site.","يُعد الشريان الفخذي الموضع الروتيني الأكثر شيوعاً لقياس النبض.",0,"خطأ؛ الشريان الكعبري هو الأكثر شيوعاً."),
+      T("A regular pulse can be counted for 30 seconds and multiplied by 2.","يمكن عدّ النبض المنتظم لمدة 30 ثانية وضرب الناتج في 2.",1),
+      T("The radial artery is the most common pulse site.","يُعد الشريان الكعبري أكثر مواضع قياس النبض شيوعاً.",1),
+      T("An irregular pulse is counted for 15 seconds.","يُعدّ النبض غير المنتظم لمدة 15 ثانية.",0,"خطأ؛ يُعدّ لمدة دقيقة كاملة."),
+      T("Pulse is a wave of blood created by contraction of the left ventricle.","النبض هو موجة دموية تنشأ عن انقباض البطين الأيسر.",1),
+      T("The thumb is preferred for palpating the pulse.","يُفضّل استخدام الإبهام لجس النبض.",0,"خطأ؛ لأن له نبضاً خاصاً به."),
+      M("The apical pulse is located at the:","يقع موضع النبض القمي عند:",["Neck|الرقبة","Groin|المنطقة الإربية (الفخذ)","Wrist|الرسغ","Point of maximal impulse (PMI), 5th intercostal space left midclavicular line|نقطة النبض الأقصى (PMI) في الحيز الوربي الخامس على خط منتصف الترقوة الأيسر"],3,"عند نقطة النبض الأقصى (PMI) في الحيز الوربي الخامس على خط منتصف الترقوة الأيسر."),
+      M("The stethoscope heart sounds heard are:","أصوات القلب المسموعة بالسماعة الطبية هي:",["Crackles|خراخر (Crackles)","Wheezes|أزيز (Wheezes)","S1 and S2 (lub-dub)|الصوتان القلبيان S1 و S2 (لاب - دوب)","Murmurs only|نفخات فقط"],2,"الصوتان القلبيان S1 و S2 (Lub-Dub)."),
+      M("Why is the diaphragm warmed before placing it on the chest?","لماذا يُدفّأ غشاء السماعة الطبية قبل وضعه على صدر المريض؟",["To avoid startling the patient|لتجنب إجفال (إزعاج) المريض ببرودته","To sterilize it|لتعقيمه","To sound louder|ليصبح الصوت أعلى","To clean it|لتنظيفه"],0,"لتجنب إجفال المريض بالبرودة المفاجئة."),
+      M("Pulse deficit is calculated as:","يُحسب عجز النبض (Pulse deficit) كالآتي:",["Radial minus apical|النبض الكعبري ناقص النبض القمي","Apical pulse minus radial pulse|النبض القمي ناقص النبض الكعبري","Sum of both|مجموعهما معاً","Average of both|متوسطهما معاً"],1,"عجز النبض = النبض القمي ناقص النبض الكعبري."),
+      M("In the apical-radial method two nurses count for:","في طريقة قياس النبض القمي-الكعبري المتزامن، يعدّ ممرضان لمدة:",["30 seconds only|30 ثانية فقط","5 minutes|5 دقائق","10 seconds|10 ثوانٍ","60 seconds each at the same time|60 ثانية لكل منهما في الوقت نفسه"],3,"يعدّ ممرضان في الوقت ذاته لمدة 60 ثانية كاملة."),
+      M("The apical pulse is counted for:","يُعدّ النبض القمي لمدة:",["5 seconds|5 ثوانٍ","1 full minute|دقيقة كاملة (60 ثانية)","10 seconds|10 ثوانٍ","30 minutes|30 دقيقة"],1,"يُعدّ النبض القمي لمدة دقيقة كاملة."),
+      M("Apical pulse is indicated for patients with:","يُستطب قياس النبض القمي للمرضى الذين يعانون من:",["Normal pulse|نبض طبيعي","Healthy status|حالة صحية سليمة","Irregular rhythm or heart disease|اضطراب نظم القلب أو أمراض القلب","Fever only|حمى فقط"],2,"لمرضى اضطراب نظم القلب وأمراض القلب."),
+      T("Pulse deficit equals apical rate minus radial rate.","يساوي عجز النبض معدل النبض القمي مطروحاً منه معدل النبض الكعبري.",1),
+      T("The nurse hears S1 and S2 as lub-dub when taking the apical pulse.","يسمع الممرض الصوتين S1 و S2 على هيئة (لاب-دوب) عند قياس النبض القمي.",1),
+      T("Pulse deficit equals radial minus apical rate.","يساوي عجز النبض معدل النبض الكعبري مطروحاً منه القمي.",0,"خطأ؛ القمي مطروحاً منه الكعبري."),
+      T("The apical pulse is located at the 5th intercostal space, left midclavicular line.","يقع النبض القمي في الحيز الوربي الخامس على خط منتصف الترقوة الأيسر.",1),
+      T("The apical pulse is counted for 15 seconds only.","يُعدّ النبض القمي لمدة 15 ثانية فقط.",0,"خطأ؛ يُعدّ لمدة دقيقة كاملة."),
+      T("The apical-radial technique can be done by one nurse using a single watch.","يمكن لممرض واحد إجراء تقنية النبض القمي-الكعبري باستخدام ساعة واحدة.",0,"خطأ؛ يتطلب ممرضين اثنين للعدّ في الوقت ذاته."),
+      M("When counting respirations the patient should:","عند عدّ معدل التنفس، يجب أن يكون المريض:",["Be unaware of the counting|غير مدرك لعملية العدّ","Talk|متحدثاً","Hold his breath|حابساً أنفاسه","Be told|مُبلَّغاً بذلك"],0,"يجب ألا يعلم المريض بأنه يتم عدّ تنفسه."),
+      M("Why is the patient unaware of respiration counting?","لماذا يجب ألا يعلم المريض أثناء عدّ تنفسه؟",["To hide the procedure|لإخفاء الإجراء","Awareness may change the rate|لأن الوعي بذلك قد يغيّر معدل التنفس","For privacy|للخصوصية","For tiredness|بسبب التعب"],1,"لأن وعي المريض يجعله يتحكم إرادياً في تنفسه فيتغير المعدل."),
+      M("The nurse keeps the hand on the wrist as if taking the pulse in order to:","يُبقي الممرض يده على معصم المريض وكأنه يقيس النبض من أجل:",["Take BP|قياس ضغط الدم","Warm the hand|تدفئة اليد","Take temperature|قياس الحرارة","Make the patient unaware|ألّا ينتبه المريض لعدّ التنفس"],3,"لعدّ التنفس دون لفت انتباه المريض."),
+      M("Normal respirations are counted for:","يُعدّ التنفس الطبيعي لمدة:",["30 seconds and multiplied by 2|30 ثانية ويُضرب الناتج في 2","1 second|ثانية واحدة","10 minutes|10 دقائق","5 seconds|5 ثوانٍ"],0,"يُعدّ لمدة 30 ثانية ويُضرب في 2."),
+      M("If breathing is abnormal, count for:","إذا كان التنفس غير طبيعي، يُعدّ لمدة:",["5 seconds|5 ثوانٍ","2 seconds|ثانيتين","1 full minute|دقيقة كاملة","15 seconds|15 ثانية"],2,"يُعدّ لمدة دقيقة كاملة."),
+      M("The best position for counting respirations is:","أفضل وضعية للمريض عند عدّ معدل التنفس هي:",["Prone only|الاستلقاء على البطن فقط","Hanging|معلقاً","Running|أثناء الجري","Sitting or lying comfortably|الجلوس أو الاستلقاء بارتياح"],3,"الجلوس أو الاستلقاء بشكل مريح."),
+      M("One respiration consists of:","تتكون دورة التنفس الواحدة من:",["Three breaths|ثلاثة أنفاس","One inspiration and one expiration|شهيق واحد وزفير واحد","One inspiration only|شهيق واحد فقط","Two expirations|زفيرين"],1,"شهيق كامل وزفير كامل معاً."),
+      T("The nurse should tell the patient to breathe deeply while counting.","يجب على الممرض أن يطلب من المريض التنفس بعمق أثناء العدّ.",0,"خطأ؛ يؤدي ذلك إلى تغيير معدل التنفس الطبيعي."),
+      T("Abnormal respirations are counted for a full minute.","يُعدّ التنفس غير الطبيعي لمدة دقيقة كاملة.",1),
+      T("The patient should not know that respirations are being counted.","يجب ألا يعلم المريض أنه يتم عدّ تنفسه.",1),
+      T("One respiration is counted at each inhalation and each exhalation separately.","يُحسب كل شهيق منفرداً وكل زفير منفرداً كدورة تنفس واحدة.",0,"خطأ؛ الشهيق والزفير معاً يُحسبان دورة تنفس واحدة."),
+      T("The nurse's hand remains on the patient's wrist after taking the pulse.","تبقى يد الممرض على معصم المريض بعد الانتهاء من قياس النبض.",1),
+      T("Respirations are counted for 5 seconds only.","يُعدّ التنفس لمدة 5 ثوانٍ فقط.",0,"خطأ؛ يُعدّ لمدة 30 ثانية أو دقيقة كاملة."),
+      M("Blood pressure is:","ضغط الدم هو:",["The force exerted by blood against the arterial walls|القوة التي يبذلها الدم على جدران الشرايين","Temperature|درجة الحرارة","Heart rate|معدل ضربات القلب","Respiratory rate|معدل التنفس"],0,"القوة الضاغطة التي يبذلها الدم على جدران الشرايين."),
+      M("Before measuring BP the patient should avoid:","قبل قياس ضغط الدم، يجب أن يتجنب المريض:",["Reading|القراءة","Sleeping|النوم","Smoking and caffeine|التدخين وتناول الكافيين","Standing|الوقوف"],2,"يُتجنب التدخين والكافيين قبل القياس."),
+      M("The cuff bladder should encircle:","يجب أن يحيط كيس (مثانة) كفة جهاز الضغط بـ:",["Only the elbow|المرفق فقط","About 80% of the adult arm|نحو 80% من محيط ذراع البالغ","10%|10% فقط","Half|نصف الذراع"],1,"حوالي 80% من محيط الذراع."),
+      M("The cuff is applied:","تُلف كفة جهاز الضغط:",["On the wrist|على الرسغ","Over clothing|فوق الملابس","On the elbow|على المرفق","1 inch (2 cm) above the antecubital fossa|فوق الحفرة المرفقية بمقدار بوصة واحدة (نحو 2 سم)"],3,"فوق الحفرة المرفقية بنحو 2 سم."),
+      M("The patient's arm should be:","يجب أن يكون ذراع المريض أثناء قياس الضغط:",["Covered|مغطى","Below hip|أسفل مستوى الورك","Bare and at heart level|عارياً ومدعوماً بمستوى القلب","Raised above head|مرفوعاً فوق الرأس"],2,"عارياً ومرتكزاً بمستوى القلب."),
+      M("The cuff is inflated to:","تُنفخ كفة جهاز الضغط إلى:",["20 to 30 mmHg above the palpated level|20 إلى 30 ملم زئبق فوق المستوى المقدَّر بالجس","50 below|50 ملم زئبق أقل من المستوى","200 always|200 ملم زئبق دائماً","Zero|الصفر"],0,"20 إلى 30 ملم زئبق فوق المستوى المقدّر بالجس."),
+      M("Deflation rate is:","معدل تفريغ الهواء من الكفة هو:",["Instant|فوري","Very quick|سريع جداً","20 mmHg per second|20 ملم زئبق في الثانية","2 mmHg per second|2 ملم زئبق في الثانية"],3,"2 ملم زئبق في الثانية."),
+      M("Deflate the cuff for at least how many mmHg after the last sound?","يُواصل تفريغ الهواء من الكفة بمقدار لا يقل عن كم ملم زئبق بعد سماع آخر صوت؟",["10 mmHg|10 ملم زئبق","1|1 ملم زئبق","100|100 ملم زئبق","None|لا شيء"],0,"10 ملم زئبق بعد آخر صوت مسموع."),
+      M("If a second reading is needed, wait at least:","إذا دعت الحاجة إلى أخذ قراءة ثانية لضغط الدم، يجب الانتظار على الأقل:",["10 seconds|10 ثوانٍ","1 second|ثانية واحدة","30 seconds|30 ثانية","None|دون انتظار"],2,"30 ثانية على الأقل."),
+      M("Final BP is calculated by:","تُحسب القراءة النهائية لضغط الدم عن طريق:",["Taking the highest|أخذ القراءة الأعلى","Averaging two or more readings|حساب متوسط قراءتين أو أكثر","Taking the lowest|أخذ القراءة الأدنى","Guessing|التخمين"],1,"بحساب متوسط قراءتين أو أكثر."),
+      M("Using too small a cuff produces:","استخدام كفة ضغط أصغر من المقاس المناسب يُنتج:",["No change|لا تغيير","Accurate|قراءة دقيقة","Falsely high reading|قراءة مرتفعة كاذبة","Falsely low|قراءة منخفضة كاذبة"],2,"تعطي الكفة الصغيرة قراءة مرتفعة بشكل كاذب."),
+      T("The cuff is deflated at 20 mmHg per second.","يُفرَّغ الهواء من الكفة بمعدل 20 ملم زئبق في الثانية.",0,"خطأ؛ يُفرَّغ بمعدل 2 ملم زئبق في الثانية."),
+      T("The arm should be bare and at heart level.","يجب أن يكون الذراع عارياً وبمستوى القلب.",1),
+      T("The cuff is applied directly over the antecubital fossa.","تُوضع الكفة مباشرة فوق الحفرة المرفقية.",0,"خطأ؛ تُوضع فوق الحفرة المرفقية بنحو 2 سم."),
+      T("The cuff bladder should encircle about 80% of the adult arm.","يجب أن يحيط كيس الكفة بنحو 80% من ذراع البالغ.",1),
+      T("The patient's arm may be placed above the head.","يجوز وضع ذراع المريض فوق مستوى الرأس أثناء القياس.",0,"خطأ؛ يجب وضعه بمستوى القلب."),
+      T("The patient should avoid smoking and caffeine before BP measurement.","يجب أن يتجنب المريض التدخين والكافيين قبل قياس ضغط الدم.",1),
+      T("A single reading is always sufficient.","تكفي قراءة واحدة دائماً لتحديد ضغط الدم.",0,"خطأ؛ يُؤخذ متوسط قراءتين أو أكثر."),
+      T("A rest of 30 seconds is needed between readings.","يلزم الانتظار 30 ثانية على الأقل بين القراءات.",1),
+      M("In the thigh method, the artery used is:","في طريقة قياس ضغط الدم من الفخذ، الشريان المستخدم هو:",["Radial artery|الشريان الكعبري","Popliteal artery|الشريان المأبضي (خلف الركبة)","Brachial|الشريان العضدي","Carotid|الشريان السباتي"],1,"الشريان المأبضي خلف الركبة."),
+      M("The cuff in the thigh method is placed:","تُوضع الكفة في طريقة قياس الضغط من الفخذ على:",["On the groin|المنطقة الإربية","On the ankle|الكاحل","On the knee|الركبة","Mid-thigh|منتصف الفخذ"],3,"حول منتصف الفخذ."),
+      M("The palpation (Riva-Rocci) method estimates:","تُقدّر طريقة الجس (Riva-Rocci) لقياس ضغط الدم:",["Systolic pressure only|الضغط الانقباضي فقط","Both|كليهما","Diastolic only|الضغط الانبساطي فقط","Pulse rate|معدل النبض"],0,"الضغط الانقباضي فقط."),
+      M("In palpation the cuff is deflated at:","في طريقة الجس، يُفرّغ الهواء من الكفة بمعدل:",["20|20 ملم زئبق/ثانية","10|10 ملم زئبق/ثانية","2 to 3 mmHg per second|2 إلى 3 ملم زئبق في الثانية","Instantly|فورياً"],2,"2 إلى 3 ملم زئبق في الثانية."),
+      M("In the palpation method the cuff is inflated to about:","في طريقة الجس، تُنفخ الكفة إلى نحو:",["200|200 ملم زئبق","0|صفر","50|50 ملم زئبق","20 mmHg past the point where the radial pulse is lost|20 ملم زئبق بعد النقطة التي يختفي عندها النبض الكعبري"],3,"20 ملم زئبق فوق نقطة اختفاء النبض الكعبري."),
+      M("Palpation is useful when:","تكون طريقة الجس مفيدة عندما:",["Korotkoff sounds cannot be heard|يتعذر سماع أصوات كورتكوف بالسماعة","Reading is normal|تكون القراءة طبيعية","Cuff is large|تكون الكفة كبيرة","Patient sleeps|يكون المريض نائماً"],0,"عند تعذر سماع أصوات كورتكوف بالسماعة."),
+      T("The palpation method estimates diastolic pressure.","تُقدّر طريقة الجس الضغط الانبساطي.",0,"خطأ؛ تُقدّر الضغط الانقباضي فقط."),
+      T("The popliteal artery is used in the thigh method.","يُستخدم الشريان المأبضي في طريقة قياس ضغط الدم من الفخذ.",1),
+      T("Palpation involves inflating 20 mmHg past loss of the radial pulse.","تتضمن طريقة الجس نفخ الكفة بمقدار 20 ملم زئبق بعد اختفاء النبض الكعبري.",1),
+      T("The thigh cuff is placed on the lower leg.","تُوضع كفة الفخذ على أسفل الساق.",0,"خطأ؛ تُوضع حول منتصف الفخذ."),
+      T("During remove glass thermometer from the mouth wipe from bulb end toward fingers.","أثناء إخراج الترمومتر الزجاجي من الفم، يُمسح من طرف البصلة باتجاه الأصابع.",0,"خطأ؛ يُمسح بعد الاستخدام من الطرف الممسوك بالأصابع نحو بصلة الترمومتر (من الأنظف إلى الأكثر تلوثاً).",1),
+      T("During rectal temperature, the nurse assist patient into back position with under leg straight and above leg flexed.","أثناء قياس الحرارة المستقيمي، يضع الممرض المريض في وضعية الاستلقاء على الظهر مع فرد الساق السفلية وثني العلوية.",0,"خطأ؛ يُوضع المريض في وضعية سيمز الجانبية (Sims' position) وليس الاستلقاء على الظهر.",1),
+      T("Squeeze a liberal amount of water-soluble lubricant onto a tissue. Lubricate thermometer (4 cm) for adult.","اعصر كمية وافرة من المزلق المائي على منديل، وزلّق الترمومتر لمسافة (4 سم) للبالغين.",1,"صواب؛ يُزلق الترمومتر لمسافة حوالي 4 سم (2.5–4 سم) للبالغين.",1),
+      T("When measuring respiration, the nurse consider the complete inhalation one cycle and exhalation another cycle count.","عند قياس التنفس، يحتسب الممرض الشهيق الكامل دورةً والزفير دورةً أخرى منفصلة.",0,"خطأ؛ الشهيق والزفير الكامل معاً يُحسبان دورة تنفس واحدة.",1),
+      T("Count pulse rate by using second hand on watch. For an irregular rhythm, count number of beats for 1 minute.","عدّ معدل النبض باستخدام عقرب الثواني في الساعة، وللنبض غير المنتظم عدّ عدد النبضات لمدة دقيقة كاملة.",1,"صواب؛ النبض غير المنتظم يُعدّ لمدة دقيقة كاملة.",1),
+      T("For an oral temperature, obtain reading 5 to 30 minutes after ingestion of hot or cold food or fluids or smoking.","لقياس الحرارة الفموية، تُؤخذ القراءة بعد 5 إلى 30 دقيقة من تناول الطعام أو السوائل الساخنة أو الباردة أو التدخين.",0,"خطأ؛ يجب الانتظار من 15 إلى 30 دقيقة وليس 5 دقائق.",1),
+      T("Place thermometer or probe into axilla with bulb anterior of axilla.","ضع الترمومتر أو المجس في الإبط بحيث تكون البصلة في الجزء الأمامي من الإبط.",0,"خطأ؛ يُوضع الترمومتر بحيث تكون البصلة في منتصف الإبط (Center of axilla) وليس في المقدمة.",1),
+      T("Ask patient to open mouth and gently place thermometer at base of tongue to the right or left of the frenulum, in the anterior sublingual pocket.","اطلب من المريض فتح فمه وضع الترمومتر برفق عند قاعدة اللسان يمين أو يسار لجام اللسان، في الجيب الأمامي تحت اللسان.",0,"خطأ؛ يُوضع في الجيب الخلفي تحت اللسان (Posterior sublingual pocket) وليس الأمامي.",1),
+      T("During measuring blood pressure should place the bell of the stethoscope over the radial artery pulsation.","أثناء قياس ضغط الدم، يجب وضع جرس السماعة الطبية فوق نبض الشريان الكعبري.",0,"خطأ؛ تُوضع السماعة فوق نبض الشريان العضدي (Brachial artery) وليس الكعبري.",1),
+      M("During measuring oral body temperature, the thermometer must be left in mouth for ................. Minutes.","أثناء قياس حرارة الجسم عن طريق الفم، يجب ترك الترمومتر في الفم لمدة ................. دقائق.",["2 minutes.|دقيقتان.","3 minutes.|3 دقائق.","5 minutes.|5 دقائق."],1,"يُترك الترمومتر في الفم لمدة 3 دقائق.",1),
+      M("When measuring Apical pulse, you should place stethoscope on................ intercostal space of the heart.","عند قياس النبض القمي، يجب وضع السماعة الطبية في الحيز الوربي ................ للقلب.",["Four|الرابع","Fifth|الخامس","Six|السادس"],1,"يُوضع في الحيز الوربي الخامس (Fifth intercostal space) على خط منتصف الترقوة الأيسر.",1),
+      M("When measuring radial pulse, you should Place............ fingers on inner aspect of patient's wrist over the radial artery, and apply light but firm pressure until pulse is palpated.","عند قياس النبض الكعبري، يجب وضع إصبعي ............ على الجانب الداخلي لمعصم المريض فوق الشريان الكعبري، مع ضغط خفيف وثابت حتى يُجس النبض.",["thumb and index|الإبهام والسبابة","Index and middle|السبابة والوسطى","Thumb and middle|الإبهام والوسطى"],1,"تُستخدم السبابة والوسطى (وليس الإبهام لأن له نبضاً خاصاً).",1),
+      M("During Measure temperature, shake down thermometer below..... C°","أثناء قياس درجة الحرارة، رجّ الترمومتر لينخفض الزئبق تحت ..... درجة مئوية.",["30 C°|30° مئوية","35 C°|35° مئوية","35.30 C°|35.30° مئوية"],1,"يُرج الترمومتر لينخفض الزئبق تحت 35 درجة مئوية.",1),
+      M("When measuring radial pulse, For a regular rhythm, count number of beats for......... seconds and multiply by 2.","عند قياس النبض الكعبري، إذا كان الإيقاع منتظماً، عدّ النبضات لمدة ......... ثانية واضرب في 2.",["20|20","30|30","40|40"],1,"للنبض المنتظم يُعدّ 30 ثانية ثم يُضرب في 2.",1),
+      M("During measuring respiration rate, observe the respirations for ......., rhythm, character, and chest movement.","أثناء قياس معدل التنفس، لاحظ التنفس من حيث ....... والإيقاع والطبيعة وحركة الصدر.",["Volume|الحجم","Depth|العمق","Degree|الدرجة"],1,"تُلاحظ حركة التنفس من حيث العمق (Depth) والإيقاع والطبيعة وحركة الصدر.",1)
+    ]
+  },
+  {
+    name:"الجزء 3: قياس سكر الدم (Blood Glucose Level)",
+    nameEn:"الجزء 3 - Blood Glucose Level",
+    questions:[
+      M("Finger-stick blood glucose measures:","يقيس اختبار سكر الدم بوخز الإصبع:",["Urine sugar|سكر البول","Capillary blood glucose from a skin puncture on a testing strip|جلوكوز الدم الشعري عبر وخز الجلد على شريط اختبار","Arterial gas|غازات الدم الشرياني","Cholesterol|الكوليسترول"],1,"يقيس تركيز الجلوكوز في الدم الشعري."),
+      M("A purpose of the test is to:","من أهداف إجراء اختبار سكر الدم:",["Measure BP|قياس ضغط الدم","Measure pulse|قياس النبض","Check temperature|فحص درجة الحرارة","Monitor hyperglycemia and hypoglycemia|مراقبة فرط سكر الدم ونقص سكر الدم"],3,"مراقبة ارتفاع السكر وانخفاضه."),
+      M("Another purpose is to:","ومن الأهداف الأخرى لاختبار سكر الدم:",["Cure diabetes|الشفاء التام من السكري","Evaluate the effectiveness of insulin|تقييم فعالية الأنسولين","Replace insulin|الاستغناء عن الأنسولين","Avoid diet|تجنب الحمية الغذائية"],1,"تقييم فعالية الأنسولين."),
+      M("The test also promotes:","يعزز هذا الاختبار أيضاً:",["Bed rest|الراحة التامة بالسرير","Dependence|الاعتماد على الغير","Patient regulation of blood glucose|قدرة المريض على ضبط وتنظيم سكر الدم ذاتياً","Fear|الخوف"],2,"تنظيم المريض لمستوى سكر الدم ذاتياً."),
+      M("Before testing, the nurse should check:","قبل إجراء اختبار سكر الدم، يجب على الممرض التحقق من:",["Skin condition and use of anticoagulants|حالة الجلد واستخدام مضادات التخثر","Diet type|نوع النظام الغذائي","Hair|الشعر","Weight|الوزن"],0,"فحص حالة الجلد والتحقق من استخدام مضادات التخثر."),
+      M("Why check for anticoagulants?","لماذا يجب التحقق من استخدام مضادات التخثر قبل الوخز؟",["Not important|غير مهم","They change taste|لأنها تغيّر المذاق","Anticoagulants cool the skin|لأن مضادات التخثر تبرّد الجلد","Bleeding may be prolonged|لأن النزف من موضع الوخز قد يطول"],3,"قد يطول زمن النزف لدى المرضى المستخدمين لمضادات التخثر."),
+      M("The meter should be:","يجب أن يكون جهاز قياس السكر:",["Boiled|مغلياً","Ignored|مُهملاً","Calibrated and checked with control solution|معايَراً ومفحوصاً بمحلول الضبط (Control solution)","Wet|مبللاً"],2,"تُجرى معايرة الجهاز وفحصه بمحلول الضبط لضمان الدقة."),
+      T("Blood glucose testing is used to measure blood pressure.","يُستخدم اختبار سكر الدم لقياس ضغط الدم.",0,"خطأ؛ يقيس مستوى الجلوكوز في الدم."),
+      T("Calibration of the meter is unnecessary.","معايرة جهاز قياس السكر غير ضرورية.",0,"خطأ؛ المعايرة مطلوبة لضمان دقة النتائج."),
+      T("Blood glucose testing helps evaluate insulin effectiveness.","يساعد اختبار سكر الدم في تقييم فعالية الأنسولين.",1),
+      T("The test helps monitor hyperglycemia and hypoglycemia.","يساعد الاختبار في مراقبة فرط سكر الدم ونقص سكر الدم.",1),
+      T("The test only monitors hypoglycemia.","يراقب الاختبار نقص سكر الدم فقط.",0,"خطأ؛ يراقب كلاً من فرط ونقص سكر الدم."),
+      T("The nurse checks the skin and anticoagulant use before the test.","يتحقق الممرض من حالة الجلد واستخدام مضادات التخثر قبل الاختبار.",1),
+      M("Suitable puncture sites include:","تشمل المواضع المناسبة للوخز لقياس سكر الدم:",["Sides of the fingers and outer heel or toes in infants|جوانب أطراف الأصابع، والحافة الخارجية للكعب أو أصابع القدم لدى الرضع","The palm|راحة اليد","The thumb|الإبهام فقط","The center pad|منتصف وسادة الإصبع"],0,"جوانب أطراف الأصابع للبالغين، والجزء الخارجي من الكعب للرضع."),
+      M("Why are the sides of fingers preferred?","لماذا يُفضَّل الوخز في جوانب أطراف الأصابع؟",["Stronger|لأنها أقوى","Fewer nerve endings and less pain|لاحتوائها على نهايات عصبية أقل مما يقلل الألم","More fat|لاحتوائها على دهون أكثر","Bigger|لأنها أكبر حجماً"],1,"تحتوي على نهايات عصبية أقل فتكون أقل إيلاماً."),
+      M("Before the puncture the hand is:","قبل إجراء الوخز، تُحضَّر اليد عن طريق:",["Wet|تبليلها","Raised|رفعها للأعلى","Lowered and massaged|خفضها للأسفل وتدليكها بلطف","Cold|تبريدها"],2,"خفضها وتدليكها بلطف لزيادة التروية الدموية."),
+      M("The site is cleaned with alcohol and:","يُنظف موضع الوخز بمسحة كحولية ثم:",["Dried completely|يُترك ليجف تماماً","Wiped with oil|يُمسح بالزيت","Sterilized|يُعقم بالحرارة","Left wet|يُترك مبللاً"],0,"يُترك ليجف تماماً في الهواء."),
+      M("Why must alcohol dry completely?","لماذا يجب أن يجف الكحول تماماً قبل الوخز؟",["None|لا سبب","Shine|ليلمع","To warm|للتدفئة","Wet alcohol may affect the result and cause stinging|لأن الكحول الرطب قد يؤثر في دقة النتيجة ويسبب لسعة مؤلمة"],3,"الكحول الرطب يخفف العينة ويؤثر في النتيجة ويسبب لسعة مؤلمة."),
+      M("The finger should not be:","يجب ألا يتم .............. للإصبع عند أخذ العينة:",["Cleaned|تنظيفه","Squeezed|عصره بقوة","Massaged|تدليكه بلطف","Dried|تجفيفه"],1,"يُمنع عصر الإصبع لأن السائل النسيجي يخفف الدم ويُفسد النتيجة."),
+      M("Why is the first drop wiped?","لماذا تُمسح قطرة الدم الأولى بشاش جاف؟",["It is too large|لأنها كبيرة جداً","Not needed|غير ضروري","It may contain tissue fluid and affect results|لأنها قد تحتوي على سائل نسيجي فتؤثر في النتيجة","It is hot|لأنها ساخنة"],2,"قد تحتوي القطرة الأولى على سائل نسيجي مما يغيّر دقة القراءة."),
+      M("After testing, pressure is applied for:","بعد أخذ العينة، يُضغط على موضع الوخز لمدة:",["15 to 30 seconds|15 إلى 30 ثانية","1 second|ثانية واحدة","10 minutes|10 دقائق","none|دون ضغط"],0,"يُضغط لمدة 15 إلى 30 ثانية لإيقاف النزف."),
+      M("Used lancets are discarded in:","يُتخلص من إبر الوخز المستعملة في:",["Sink|الحوض","Sharps/biohazard container|حاوية الأدوات الحادة / المخلفات الطبية الخطرة","Pocket|الجيب","Regular trash|سلة المهملات العادية"],1,"في حاوية الأدوات الحادة المقاومة للثقب."),
+      M("Documentation should include:","يجب أن يشمل التوثيق التمريضي للاختبار:",["Nothing|لا شيء","Only time|الوقت فقط","Weight|الوزن","Time, site, glucose level and teaching|الوقت وموضع الوخز ومستوى السكر والتثقيف الصحي للمريض"],3,"الوقت وموضع الوخز ومستوى السكر والتثقيف الصحي للمريض."),
+      T("The first drop of blood is wiped away.","تُمسح قطرة الدم الأولى ولا تُستخدم في القياس.",1),
+      T("Lancets are thrown in regular trash.","تُلقى إبر الوخز في سلة المهملات العادية.",0,"خطأ؛ تُلقى في حاوية الأدوات الحادة."),
+      T("Pressure is applied for 15 to 30 seconds after puncture.","يُضغط على موضع الوخز لمدة 15 إلى 30 ثانية بعد الوخز.",1),
+      T("Documentation of time and site is not required.","توثيق الوقت وموضع الوخز غير مطلوب.",0,"خطأ؛ التوثيق الكامل مطلوب."),
+      T("The finger should be squeezed to obtain more blood.","يجب عصر الإصبع للحصول على كمية أكبر من الدم.",0,"خطأ؛ يُمنع عصر الإصبع لأن السائل النسيجي يخفف العينة."),
+      T("Lancets are discarded in a sharps container.","يُتخلص من إبر الوخز في حاوية الأدوات الحادة.",1),
+      T("The sides of the fingers are suitable puncture sites.","تُعد جوانب أطراف الأصابع مواضع مناسبة للوخز.",1),
+      T("The center pad is the best site.","يُعد منتصف وسادة الإصبع أفضل موضع للوخز.",0,"خطأ؛ جوانب الأصابع هي الأفضل لأنها أقل حساسية وألماً."),
+      T("During measuring blood glucose test should squeeze from base of finger, toe, or heel to puncture site.","أثناء قياس سكر الدم، يجب العصر من قاعدة الإصبع أو إصبع القدم أو الكعب باتجاه موضع الوخز.",0,"خطأ؛ يتم التدليك بلطف دون عصر موضع الوخز لأن العصر يخفف العينة بالسائل النسيجي.",1),
+      M("After measure blood glucose level apply pressure to puncture site for ........ to ......... seconds.","بعد قياس مستوى سكر الدم، اضغط على موضع الوخز لمدة ........ إلى ......... ثانية.",["15 to 20|15 إلى 20","15 to 30|15 إلى 30","15 to 40|15 إلى 40"],1,"يُضغط على موضع الوخز لمدة 15 إلى 30 ثانية.",1)
+    ]
+  }
+];
+
+const QUESTION_BANK = ORIGINAL_BANK.map(function(sec){
+  return {
+    name:sec.name,nameEn:sec.nameEn,originalName:sec.name,
+    questions:sec.questions.map(function(q,idx){return Object.assign({},q,{num:idx+1})})
+  };
+});
+
+const LS_KEY='fundamentals_procedures_v2';
+const TRANS_CACHE_KEY='fundamentals_trans_cache_v1';
+let transCache={};
+let state={mode:'practice',order:'device',showTranslation:true,timerSeconds:0,quizQuestions:[],currentIndex:0,correctCount:0,wrongCount:0,answered:false,selectedOptionIdx:null,sessionMistakes:[],timerInterval:null,timeLeft:0,questionStates:[]};
+let maleEnglishVoice=null,currentExplainLang='ar',currentExplainName='';
+let pdfTargetSections=[];
+let pdfGenerating=false;
+
+function safeGetLS(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function safeSetLS(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function safeRemoveLS(k){try{localStorage.removeItem(k)}catch(e){}}
+try{transCache=JSON.parse(safeGetLS(TRANS_CACHE_KEY)||'{}')||{};}catch(e){transCache={};}
+
+function saveTransCache(){
+  try{
+    const keys=Object.keys(transCache);
+    if(keys.length>2500)keys.slice(0,500).forEach(k=>delete transCache[k]);
+    safeSetLS(TRANS_CACHE_KEY,JSON.stringify(transCache));
+  }catch(e){}
+}
+
+async function translateEnToAr(text){
+  if(!text)return '';
+  const clean=text.replace(/_{3,}/g,'...').trim();
+  if(transCache[clean])return transCache[clean];
+  try{
+    const res=await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(clean));
+    if(res.ok){
+      const data=await res.json();
+      if(data&&Array.isArray(data[0])){
+        const out=data[0].map(x=>(x&&x[0])?x[0]:'').join('').trim();
+        if(out){transCache[clean]=out;return out;}
+      }
+    }
+  }catch(e){}
+  try{
+    const res2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(clean)+'&langpair=en|ar');
+    if(res2.ok){
+      const d2=await res2.json();
+      const out2=d2&&d2.responseData&&d2.responseData.translatedText;
+      if(out2&&out2.trim()){transCache[clean]=out2.trim();return out2.trim();}
+    }
+  }catch(e){}
+  return '';
+}
+
+const AR_LETTERS=['أ) ','ب) ','ج) ','د) '];
+async function ensureQuestionTranslated(q){
+  if(!q||q._transDone)return;
+  let changed=false;
+  const tasks=[];
+  if(!q.ar){tasks.push(translateEnToAr(q.en).then(ar=>{if(ar){q.ar=ar;changed=true;}}));}
+  q.options.forEach((opt,i)=>{
+    if(!opt.ar){
+      const m=opt.en.match(/^([A-D]\)\s*)(.*)$/i);
+      const body=m?m[2]:opt.en, prefix=m?(AR_LETTERS[i]||''):'';
+      tasks.push(translateEnToAr(body).then(ar=>{if(ar){opt.ar=prefix+ar;changed=true;}}));
+    }
+  });
+  if(tasks.length>0){await Promise.all(tasks);if(changed)saveTransCache();}
+  q._transDone=!!(q.ar&&q.options.every(o=>!!o.ar));
+}
+
+function prefetchNextQuestions(fromIdx){
+  if(!state.showTranslation)return;
+  [fromIdx+1,fromIdx+2].forEach(i=>{if(i<state.quizQuestions.length)ensureQuestionTranslated(state.quizQuestions[i]);});
+}
+
+function setTheme(t){document.body.classList.toggle('light',t==='light');document.querySelectorAll('.theme-toggle button').forEach(b=>{b.classList.toggle('active',b.dataset.theme===t)});safeSetLS('informatics_theme',t)}
+function loadProgress(){try{const r=safeGetLS(LS_KEY);if(!r)return{attempted:{},mistakes:{}};return JSON.parse(r)}catch(e){return{attempted:{},mistakes:{}}}}
+function saveProgress(p){safeSetLS(LS_KEY,JSON.stringify(p))}
+function qid(s,n){return s+'___'+n}
+
+function isTFQuestion(q){
+  if(q.options&&q.options.length===2){
+    const o0=(q.options[0].en||'').trim().toLowerCase(),o1=(q.options[1].en||'').trim().toLowerCase();
+    return(o0==='true'||o0.startsWith('true'))&&(o1==='false'||o1.startsWith('false'));
+  }
+  return false;
+}
+
+function showExplanation(name){
+  currentExplainName=name;
+  const box=document.getElementById('section-explanation'),title=document.getElementById('explain-title'),textDiv=document.getElementById('explain-text');
+  const data={
+    "الجزء 1: التعقيم ومكافحة العدوى (Asepsis & Infection Control)":{
+      text_ar:"يشمل هذا الجزء (113 سؤالاً):\n• التعقيم الطبي والجراحي والفرق بين النظيف والملوث والإنتان (Sepsis).\n• غسل اليدين بالماء الدافئ والصابون (مدة الفرك 20 ثانية على الأقل، التدفق من الأصابع للساعدين، إغلاق الصنبور بمنشفة ورقية نظيفة).\n• المطهر الكحولي (تركيز 60–95% كحول عندما لا تكون اليدان متسختين ظاهرياً).\n• الكمامة الطبية (تغطي الأنف والفم، وتُفك الأربطة السفلية أولاً عند النزع)، الرداء المعقم، والقفازات المعقمة.",
+      text_en:"Covers (113 Questions):\n• Medical vs. surgical asepsis, clean vs. dirty, sepsis.\n• Hand washing (warm water, 20s friction, fingertips to forearms, paper towel to close faucet).\n• Alcohol-based hand rub (60–95% alcohol when not visibly soiled).\n• Face mask (lower strings untied first), Sterile gown, and Sterile gloves."
+    },
+    "الجزء 2: العلامات الحيوية (Vital Signs)":{
+      text_ar:"يشمل هذا الجزء (114 سؤالاً):\n• درجة الحرارة: الفموية (3 دقائق، في الجيب الخلفي تحت اللسان، انتظار 15–30 دقيقة بعد الأكل أو التدخين، الرج تحت 35° مئوية)، الإبطية (5 دقائق، في منتصف الإبط)، المستقيمية (دقيقتان، وضعية سيمز، عمق 2.5–4 سم للبالغين باتجاه السُرّة).\n• النبض: الكعبري (السبابة والوسطى والبنصر دون الإبهام، 30 ثانية للمنتظم، دقيقة كاملة لغير المنتظم)، والقمي (الحيز الوربي الخامس على خط منتصف الترقوة الأيسر، دقيقة كاملة) وعجز النبض (القمي ناقص الكعبري).\n• التنفس: دون علم المريض (الشهيق + الزفير = دورة واحدة، مع ملاحظة العمق والإيقاع). وضغط الدم: بالسماعة فوق الشريان العضدي (تغطية 80% من الذراع، تفريغ بمعدل 2 ملم زئبق/ثانية).",
+      text_en:"Covers (114 Questions):\n• Temperature: Oral (3 min, posterior sublingual pocket, wait 15–30 min, shake below 35°C), Axillary (5 min, center of axilla), Rectal (2 min, Sims' position, toward umbilicus).\n• Pulse: Radial (index & middle fingers, no thumb, 30s×2 if regular, 1 min if irregular), Apical (5th ICS MCL, 1 min), Pulse deficit.\n• Respiration (unaware, depth & rhythm), and Blood Pressure (brachial artery, auscultation, thigh/popliteal, palpation)."
+    },
+    "الجزء 3: قياس سكر الدم (Blood Glucose Level)":{
+      text_ar:"يشمل هذا الجزء (33 سؤالاً):\n• قياس جلوكوز الدم الشعري، ومراقبة فرط السكر ونقص السكر، وتقييم فعالية الأنسولين.\n• التحضير: تقييم حالة الجلد والتحقق من مضادات التخثر، ومعايرة الجهاز بمحلول الضبط.\n• الخطوات: الوخز في جانب الإصبع (نهايات عصبية أقل)، تجفيف الكحول تماماً، مسح قطرة الدم الأولى (لاحتوائها على سائل نسيجي)، عدم عصر الإصبع، الضغط 15–30 ثانية بعد الوخز، والتخلص من إبرة الوخز في حاوية الأدوات الحادة.",
+      text_en:"Covers (33 Questions):\n• Capillary blood glucose monitoring & insulin evaluation.\n• Check skin & anticoagulants, calibrate meter.\n• Use sides of fingers, let alcohol dry, wipe first drop, avoid squeezing, apply pressure 15–30s, discard lancet in sharps container."
+    }
+  };
+  const d=data[name];title.textContent=name;
+  if(!d){textDiv.textContent=currentExplainLang==='ar'?'لا يوجد شرح':'No explanation.';box.classList.add('show');updateExplainTextClass();return;}
+  textDiv.innerHTML=(currentExplainLang==='ar'?d.text_ar:d.text_en).replace(/\n/g,'<br>');updateExplainTextClass();box.classList.add('show');
+}
+function updateExplainTextClass(){const t=document.getElementById('explain-text');t.classList.remove('ar','en');t.classList.add(currentExplainLang);}
+function closeExplanation(){document.getElementById('section-explanation').classList.remove('show');}
+function setExplainLang(l){currentExplainLang=l;document.querySelectorAll('.explain-controls .lang-btn').forEach(b=>{b.classList.toggle('active',b.dataset.lang===l)});if(currentExplainName)showExplanation(currentExplainName);}
+
+function updateHomeStats(){
+  const p=loadProgress(),keys=Object.keys(p.attempted||{});let c=0,w=0;
+  keys.forEach(k=>{if(p.attempted[k]==='correct')c++;else w++});
+  const total=keys.length,pct=total?Math.round((c/total)*100):0;
+  document.getElementById('statAttempted').textContent=total;
+  document.getElementById('statCorrect').textContent=c;
+  document.getElementById('statWrong').textContent=w;
+  document.getElementById('progressPercent').innerHTML=pct+'<small>%</small>';
+  document.getElementById('progressCircle').style.strokeDashoffset=176-(pct/100)*176;
+  updateWeakSectionSuggestion(p);
+}
+
+function updateWeakSectionSuggestion(p){
+  const att=p.attempted||{};let bestIdx=-1,bestRate=0,bestName='';
+  QUESTION_BANK.forEach((sec,idx)=>{
+    let a=0,w=0;sec.questions.forEach(q=>{const k=qid(sec.name,q.num);if(att[k]!==undefined){a++;if(att[k]==='wrong')w++}});
+    if(a>=2){const rate=w/a;if(rate>bestRate){bestRate=rate;bestIdx=idx;bestName=sec.name}}
+  });
+  const link=document.getElementById('weakLink');
+  if(bestIdx>=0&&bestRate>0){
+    link.style.display='flex';document.getElementById('weakSectionName').textContent=bestName;
+    document.getElementById('weakSectionRate').textContent=Math.round(bestRate*100)+'%';link.dataset.sectionIdx=bestIdx;
+  }else link.style.display='none';
+}
+
+function buildSectionList(){
+  const wrap=document.getElementById('section-list');if(!wrap)return;wrap.innerHTML='';
+  QUESTION_BANK.forEach((sec,idx)=>{
+    const div=document.createElement('div');div.className='section-item active';div.dataset.idx=idx;
+    const nameSpan=document.createElement('span');nameSpan.className='sec-title';nameSpan.textContent=sec.nameEn;
+    const pdfBtn=document.createElement('button');pdfBtn.className='pdf-btn';pdfBtn.type='button';pdfBtn.innerHTML='<i class="fas fa-file-pdf"></i> PDF';pdfBtn.title="تحميل هذا الجزء PDF";
+    pdfBtn.onclick=(e)=>{e.stopPropagation();openPdfModal([idx]);};
+    const infoBtn=document.createElement('button');infoBtn.className='info-btn';infoBtn.type='button';infoBtn.innerHTML='<i class="fas fa-info-circle"></i>';infoBtn.title="شرح الجزء";
+    infoBtn.onclick=(e)=>{e.stopPropagation();showExplanation(sec.originalName)};
+    const cntSpan=document.createElement('span');cntSpan.className='cnt';cntSpan.textContent=sec.questions.length;
+    div.appendChild(nameSpan);div.appendChild(pdfBtn);div.appendChild(infoBtn);div.appendChild(cntSpan);
+    div.onclick=()=>{div.classList.toggle('active');updateToggleAllButton();};
+    wrap.appendChild(div);
+  });
+  updateToggleAllButton();
+}
+
+function toggleAllSections(){
+  const items=document.querySelectorAll('#section-list .section-item');
+  const allActive=Array.from(items).every(el=>el.classList.contains('active'));
+  items.forEach(el=>el.classList.toggle('active',!allActive));updateToggleAllButton();
+}
+function updateToggleAllButton(){
+  const items=document.querySelectorAll('#section-list .section-item');
+  const activeCount=document.querySelectorAll('#section-list .section-item.active').length;
+  const btn=document.getElementById('selectAllBtn');
+  if(btn)btn.textContent=(activeCount===items.length&&items.length>0)?'إلغاء الكل':'تحديد الكل';
+}
+
+function toggleOptions(t){
+  document.querySelectorAll('.sub-options').forEach(e=>e.classList.remove('show'));
+  const target=document.getElementById(t);if(target)target.classList.add('show');
+  document.querySelectorAll('.action-icon').forEach(e=>e.classList.remove('active'));
+  const activeIcon=document.querySelector(`.action-icon[data-target="${t}"]`);if(activeIcon)activeIcon.classList.add('active');
+}
+function closeAllOptions(){
+  document.querySelectorAll('.sub-options').forEach(e=>e.classList.remove('show'));
+  document.querySelectorAll('.action-icon').forEach(e=>e.classList.remove('active'));
+  const def=document.querySelector('.action-icon[data-target="modeOptions"]');if(def)def.classList.add('active');
+}
+function selectMode(m){state.mode=m;document.querySelectorAll('#modeOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.mode===m)});closeAllOptions();}
+function selectOrder(o){state.order=o;document.querySelectorAll('#orderOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.order===o)});closeAllOptions();}
+function selectTranslate(t){state.showTranslation=(t==='yes');document.querySelectorAll('#langOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.translate===t)});closeAllOptions();}
+function selectTimer(s){state.timerSeconds=s;document.querySelectorAll('#timerOptions .action-btn').forEach(e=>{e.classList.toggle('active',parseInt(e.dataset.timer)===s)});closeAllOptions();}
+function toggleQuizTranslation(){
+  state.showTranslation=!state.showTranslation;
+  document.querySelectorAll('#langOptions .action-btn').forEach(e=>{e.classList.toggle('active',(e.dataset.translate==='yes')===state.showTranslation)});
+  renderQuestion();
+}
+
+function enterApp(){
+  try{
+    document.getElementById('main-screen').style.display='block';
+    buildSectionList();updateHomeStats();
+    setTheme(safeGetLS('informatics_theme')||'dark');
+    if(window.speechSynthesis){
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged=()=>{window.speechSynthesis.getVoices();maleEnglishVoice=null;};
+    }
+  }catch(err){
+    const wrap=document.getElementById('section-list');
+    if(wrap)wrap.innerHTML='<div style="color:#ef5350;padding:10px;">خطأ: '+err.message+'</div>';
+  }
+}
+function goHome(){stopTimer();document.getElementById('screen-quiz').classList.remove('active');document.getElementById('screen-results').classList.remove('active');document.getElementById('main-screen').style.display='block';updateHomeStats();}
+function quitQuiz(){if(confirm('متأكد تخرج؟')){stopTimer();goHome();}}
+function resetProgress(){if(confirm('متأكد تصفير التقدم؟')){safeRemoveLS(LS_KEY);updateHomeStats();}}
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
+
+function startQuiz(){
+  const activeEls=document.querySelectorAll('#section-list .section-item.active');
+  if(activeEls.length===0){alert('اختار جزء واحد على الأقل!');return;}
+  const idxs=Array.from(activeEls).map(el=>parseInt(el.dataset.idx));
+  let qs=[];
+  idxs.forEach(idx=>{const sec=QUESTION_BANK[idx];sec.questions.forEach(q=>{qs.push(Object.assign({},q,{sectionName:sec.name,options:q.options.map(o=>Object.assign({},o))}));});});
+  if(qs.length===0){alert('هذا الجزء لا يحتوي على أسئلة!');return;}
+  if(state.order==='random')qs=shuffleArray(qs);
+  state.quizQuestions=qs;state.currentIndex=0;state.correctCount=0;state.wrongCount=0;state.sessionMistakes=[];
+  state.questionStates=qs.map(()=>({selectedOption:null,answered:false,isCorrect:false,chosenIdxs:[]}));
+  document.getElementById('main-screen').style.display='none';
+  document.getElementById('screen-quiz').classList.add('active');
+  document.getElementById('screen-results').classList.remove('active');
+  const gridContainer=document.getElementById('questions-grid-container');if(gridContainer)gridContainer.classList.remove('show');
+  renderQuestion();
+}
+
+function reviewMistakes(){
+  const p=loadProgress(),mistakeKeys=Object.keys(p.mistakes||{});
+  if(mistakeKeys.length===0){alert('مفيش أخطاء للمراجعة 🎉');return;}
+  let qs=[];
+  QUESTION_BANK.forEach(sec=>{sec.questions.forEach(q=>{if(mistakeKeys.includes(qid(sec.name,q.num)))qs.push(Object.assign({},q,{sectionName:sec.name,options:q.options.map(o=>Object.assign({},o))}));});});
+  if(qs.length===0){alert('مفيش أخطاء للمراجعة 🎉');return;}
+  state.quizQuestions=qs;state.currentIndex=0;state.correctCount=0;state.wrongCount=0;state.sessionMistakes=[];state.mode='practice';
+  state.questionStates=qs.map(()=>({selectedOption:null,answered:false,isCorrect:false,chosenIdxs:[]}));
+  document.getElementById('main-screen').style.display='none';
+  document.getElementById('screen-quiz').classList.add('active');
+  document.getElementById('screen-results').classList.remove('active');
+  const gridContainer=document.getElementById('questions-grid-container');if(gridContainer)gridContainer.classList.remove('show');
+  renderQuestion();
+}
+
+function startWeakSectionQuiz(){
+  const link=document.getElementById('weakLink'),idx=link.dataset.sectionIdx;if(idx===undefined)return;
+  document.querySelectorAll('#section-list .section-item').forEach(el=>{el.classList.toggle('active',el.dataset.idx==idx)});
+  startQuiz();
+}
+
+function toggleQuestionsGrid(){
+  const gridContainer=document.getElementById('questions-grid-container');if(!gridContainer)return;
+  gridContainer.classList.toggle('show');
+  if(gridContainer.classList.contains('show'))renderGridButtons();
+}
+function renderGridButtons(){
+  const gridDiv=document.getElementById('q-grid-buttons');if(!gridDiv)return;gridDiv.innerHTML='';
+  state.quizQuestions.forEach((q,i)=>{
+    const btn=document.createElement('button');btn.className='grid-btn';
+    if(q.isNew)btn.classList.add('new-question');
+    btn.textContent=i+1;
+    const st=state.questionStates[i];
+    if(i===state.currentIndex)btn.classList.add('current');
+    if(st.answered)btn.classList.add(st.isCorrect?'answered-correct':'answered-wrong');
+    btn.onclick=()=>goToSpecificQuestion(i);
+    gridDiv.appendChild(btn);
+  });
+}
+function goToSpecificQuestion(targetIndex){if(targetIndex>=0&&targetIndex<state.quizQuestions.length){state.currentIndex=targetIndex;renderQuestion();}}
+
+function renderQuestion(){
+  const idx=state.currentIndex,q=state.quizQuestions[idx],st=state.questionStates[idx];
+  state.answered=st.answered;state.selectedOptionIdx=st.selectedOption;
+  const total=state.quizQuestions.length;
+  document.getElementById('quiz-position').innerHTML=`<i class="fas fa-question-circle"></i> ${idx+1} / ${total}`;
+  document.getElementById('quiz-score').innerHTML=`<i class="fas fa-check-circle" style="color:var(--success);"></i> ${state.correctCount} <i class="fas fa-times-circle" style="color:var(--danger);margin-right:4px;"></i> ${state.wrongCount}`;
+  document.getElementById('progress-bar').style.width=(idx/total*100)+'%';
+  const qIsTF=isTFQuestion(q);
+  let tagText=`<i class="fas fa-tag"></i> ${q.sectionName}`;
+  if(qIsTF)tagText+=` <span class="tf-badge">صواب / خطأ</span>`;
+  document.getElementById('q-section-tag').innerHTML=tagText;
+  const transBtn=document.getElementById('btn-toggle-trans');
+  if(transBtn)transBtn.innerHTML=state.showTranslation?'<i class="fas fa-language"></i> ترجمة: مفعّلة':'<i class="fas fa-language"></i> EN فقط';
+  const gridToggleBtn=document.getElementById('btn-toggle-grid'),gridContainer=document.getElementById('questions-grid-container');
+  if(state.mode==='practice'){if(gridToggleBtn)gridToggleBtn.style.display='inline-flex';if(gridContainer&&gridContainer.classList.contains('show'))renderGridButtons();}
+  else{if(gridToggleBtn)gridToggleBtn.style.display='none';if(gridContainer)gridContainer.classList.remove('show');}
+
+  const qEn=document.getElementById('q-en');qEn.classList.toggle('new-question',!!q.isNew);wrapEnglishText(`${q.num}. ${q.en}`,qEn);
+  const qAr=document.getElementById('q-ar');qAr.classList.toggle('new-question',!!q.isNew);
+  if(state.showTranslation){qAr.textContent=q.ar||'جارٍ الترجمة...';qAr.style.display='block';}
+  else{qAr.textContent='';qAr.style.display='none';}
+
+  const opts=document.getElementById('options');opts.innerHTML='';
+  q.options.forEach((opt,i)=>{
+    const div=document.createElement('div');div.className='option';div.dataset.idx=i;div.dataset.correct=opt.correct?'true':'false';
+    const enDiv=document.createElement('div');enDiv.className='opt-en';wrapEnglishText(opt.en,enDiv);
+    const arDiv=document.createElement('div');arDiv.className='opt-ar';arDiv.textContent=opt.ar||'';arDiv.style.display=state.showTranslation&&opt.ar?'block':'none';
+    const mark=document.createElement('span');mark.className='mark';
+    div.appendChild(enDiv);div.appendChild(arDiv);div.appendChild(mark);
+    div.onclick=()=>onOptionClick(i);
+    opts.appendChild(div);
+  });
+
+  if(state.showTranslation){
+    if(!q._transDone){
+      ensureQuestionTranslated(q).then(()=>{
+        if(state.currentIndex!==idx||!state.showTranslation)return;
+        qAr.textContent=q.ar||'';qAr.style.display=q.ar?'block':'none';
+        const optEls=opts.querySelectorAll('.option');
+        q.options.forEach((opt,i)=>{
+          if(optEls[i]){const arEl=optEls[i].querySelector('.opt-ar');if(arEl){arEl.textContent=opt.ar||'';arEl.style.display=opt.ar?'block':'none';}}
+        });
+      });
+    }
+    prefetchNextQuestions(idx);
+  }
+
+  if(st.answered){
+    const chosenIdxs=st.chosenIdxs;
+    document.querySelectorAll('.option').forEach(el=>{
+      const idxOpt=parseInt(el.dataset.idx);el.classList.add('disabled');
+      if(el.dataset.correct==='true'){el.classList.add('correct');el.querySelector('.mark').textContent='✅';}
+      else if(chosenIdxs.includes(idxOpt)){el.classList.add('wrong');el.querySelector('.mark').textContent='❌';}
+      if(st.selectedOption===idxOpt)el.classList.add('selected');
+    });
+    const fb=document.getElementById('feedback');fb.classList.remove('hidden');fb.className='feedback-box '+(st.isCorrect?'correct':'wrong');
+    let correctLabels=qIsTF?((q.options.find(o=>o.correct)||{}).en==='True'?'True (صواب)':'False (خطأ)'):q.options.map(o=>o.correct?o.en:null).filter(Boolean).join('، ');
+    fb.innerHTML=`<div class="fb-title">${st.isCorrect?'✅ صحيحة!':'❌ غلط'}</div>${!st.isCorrect?`<div><b>الصح:</b> ${correctLabels}</div>`:''}<div class="fb-explain">💡 ${q.explain_ar||''}</div>`;
+  }else{
+    document.getElementById('feedback').classList.add('hidden');document.getElementById('feedback').innerHTML='';
+  }
+
+  const nextBtn=document.getElementById('btn-next'),prevBtn=document.getElementById('btn-prev');
+  prevBtn.disabled=(idx===0);const isLast=idx===total-1;
+  if(state.mode==='test'){
+    nextBtn.disabled=(state.selectedOptionIdx===null);
+    nextBtn.innerHTML=`<i class="fas fa-arrow-left"></i> ${isLast?'إنهاء ✅':'التالي ⬅️'}`;
+    nextBtn.onclick=()=>{
+      if(state.selectedOptionIdx===null)return;
+      if(!state.answered){
+        const q2=state.quizQuestions[state.currentIndex];
+        const isCorrect=isTFQuestion(q2)?((document.querySelector(`.option[data-idx="${state.selectedOptionIdx}"]`)||{}).dataset?.correct==='true'):q2.options[state.selectedOptionIdx].correct;
+        finalizeAnswer(isCorrect,[state.selectedOptionIdx]);
+      }
+      if(state.currentIndex<state.quizQuestions.length-1){state.currentIndex++;renderQuestion();}else{showResults();}
+    };
+  }else{
+    nextBtn.disabled=false;
+    nextBtn.innerHTML=isLast?`<i class="fas fa-flag-checkered"></i> إنهاء`:`<i class="fas fa-arrow-left"></i> التالي`;
+    nextBtn.onclick=()=>{
+      if(!state.answered){alert('يجب اختيار إجابة أولاً!');return;}
+      if(state.currentIndex<state.quizQuestions.length-1){state.currentIndex++;renderQuestion();}else{showResults();}
+    };
+  }
+  if(!st.answered)startTimer();else stopTimer();
+}
+
+function onOptionClick(i){
+  if(state.answered)return;state.selectedOptionIdx=i;
+  document.querySelectorAll('.option').forEach(el=>el.classList.remove('selected'));
+  document.querySelector(`.option[data-idx="${i}"]`).classList.add('selected');
+  if(state.mode==='test'){document.getElementById('btn-next').disabled=false;}else{submitSingleAnswer(i);}
+}
+function submitSingleAnswer(i){
+  const q=state.quizQuestions[state.currentIndex];
+  const isCorrect=isTFQuestion(q)?(document.querySelector(`.option[data-idx="${i}"]`).dataset.correct==='true'):!!q.options[i].correct;
+  finalizeAnswer(isCorrect,[i]);
+}
+function finalizeAnswer(isCorrect,chosenIdxs){
+  stopTimer();state.answered=true;
+  const idx=state.currentIndex,st=state.questionStates[idx],q=state.quizQuestions[idx];
+  st.selectedOption=state.selectedOptionIdx;st.answered=true;st.isCorrect=isCorrect;st.chosenIdxs=chosenIdxs;
+  if(isCorrect)state.correctCount++;else state.wrongCount++;
+  const p=loadProgress(),key=qid(q.sectionName,q.num);
+  p.attempted=p.attempted||{};p.mistakes=p.mistakes||{};p.attempted[key]=isCorrect?'correct':'wrong';
+  if(isCorrect)delete p.mistakes[key];else p.mistakes[key]=true;
+  saveProgress(p);
+  if(!isCorrect)state.sessionMistakes.push({q,chosenIdxs});
+  renderQuestion();
+}
+function previousQuestion(){if(state.currentIndex>0){state.currentIndex--;renderQuestion();}}
+
+function showResults(){
+  stopTimer();document.getElementById('screen-quiz').classList.remove('active');
+  document.getElementById('screen-results').classList.add('active');document.getElementById('mistakes-list-wrap').classList.add('hidden');
+  const total=state.quizQuestions.length,pct=total?Math.round((state.correctCount/total)*100):0;
+  document.getElementById('result-pct').textContent=pct+'%';document.getElementById('score-circle').style.setProperty('--pct',pct);
+  document.getElementById('res-total').textContent=total;document.getElementById('res-correct').textContent=state.correctCount;document.getElementById('res-wrong').textContent=state.wrongCount;
+  document.getElementById('btn-show-mistakes').classList.toggle('hidden',state.sessionMistakes.length===0);
+}
+
+function showMistakesList(){
+  const wrap=document.getElementById('mistakes-list-wrap'),list=document.getElementById('mistakes-list');list.innerHTML='';
+  state.sessionMistakes.forEach(m=>{
+    const q=m.q;let yourAnswers='',correctAnswers='';
+    if(isTFQuestion(q)){
+      yourAnswers=m.chosenIdxs.map(i=>q.options[i]?.en||'').join('، ');
+      correctAnswers=(q.options.find(o=>o.correct)||{}).en==='True'?'True (صواب)':'False (خطأ)';
+    }else{
+      yourAnswers=m.chosenIdxs.map(i=>q.options[i].en).join('، ');
+      correctAnswers=q.options.map(o=>o.correct?o.en:null).filter(Boolean).join('، ');
+    }
+    const div=document.createElement('div');div.className='mistake-item';
+    const toggleBtn=document.createElement('button');toggleBtn.className='mistake-toggle';toggleBtn.innerHTML='<i class="fas fa-eye"></i> عرض السؤال';
+    const detailDiv=document.createElement('div');detailDiv.className='mistake-detail';detailDiv.style.display='none';
+    const qHeader=document.createElement('div');qHeader.style.fontWeight='bold';qHeader.style.marginBottom='8px';qHeader.textContent=`${q.num}. ${q.en}`;detailDiv.appendChild(qHeader);
+    if(q.ar){const qArH=document.createElement('div');qArH.style.color='var(--muted)';qArH.style.marginBottom='8px';qArH.style.direction='rtl';qArH.style.textAlign='right';qArH.textContent=q.ar;detailDiv.appendChild(qArH);}
+    const optsDiv=document.createElement('div');
+    q.options.forEach((opt,i)=>{
+      const row=document.createElement('div');row.className='opt-row';
+      const label=document.createElement('span');label.className='opt-label';label.textContent=opt.en+(opt.ar?' — '+opt.ar:'');
+      const status=document.createElement('span');status.className='opt-status';
+      if(opt.correct){status.textContent='✅';status.style.color='var(--success)';}
+      else if(m.chosenIdxs.includes(i)){status.textContent='❌';status.style.color='var(--danger)';}
+      else{status.textContent='—';status.style.color='var(--muted)';}
+      row.appendChild(label);row.appendChild(status);optsDiv.appendChild(row);
+    });
+    detailDiv.appendChild(optsDiv);
+    const explainDiv=document.createElement('div');explainDiv.style.marginTop='8px';explainDiv.style.fontStyle='italic';explainDiv.style.color='var(--muted)';explainDiv.style.direction='rtl';explainDiv.style.textAlign='right';explainDiv.textContent=`💡 ${q.explain_ar||''}`;detailDiv.appendChild(explainDiv);
+    toggleBtn.onclick=()=>{const vis=detailDiv.style.display!=='none';detailDiv.style.display=vis?'none':'block';toggleBtn.innerHTML=vis?'<i class="fas fa-eye"></i> عرض السؤال':'<i class="fas fa-eye-slash"></i> إخفاء السؤال';};
+    div.innerHTML=`<div class="m-q">${q.num}. ${q.en}</div><div class="m-you">إجابتك: ${yourAnswers||'لم تجب'}</div><div class="m-correct">الصح: ${correctAnswers}</div>`;
+    div.appendChild(toggleBtn);div.appendChild(detailDiv);list.appendChild(div);
+  });
+  wrap.classList.remove('hidden');wrap.scrollIntoView({behavior:'smooth'});
+}
+
+function stopTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;}const b=document.getElementById('timer-badge');b.classList.add('hidden');b.classList.remove('warn','danger');}
+function startTimer(){stopTimer();if(!state.timerSeconds||state.timerSeconds<=0)return;const badge=document.getElementById('timer-badge');state.timeLeft=state.timerSeconds;badge.classList.remove('hidden','warn','danger');badge.innerHTML=`<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;state.timerInterval=setInterval(()=>{state.timeLeft--;if(state.timeLeft<=0){badge.innerHTML=`<i class="fas fa-hourglass-end"></i> 0`;stopTimer();onTimeUp();return;}badge.innerHTML=`<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;badge.classList.toggle('warn',state.timeLeft<=3&&state.timeLeft>1);badge.classList.toggle('danger',state.timeLeft<=1);},1000);}
+function onTimeUp(){if(state.answered)return;finalizeAnswer(false,state.selectedOptionIdx!==null?[state.selectedOptionIdx]:[]);}
+
+function getMaleEnglishVoice(){if(maleEnglishVoice)return maleEnglishVoice;const voices=window.speechSynthesis.getVoices();let v=voices.find(v=>v.lang==='en-US'&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang.startsWith('en')&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang.startsWith('en'));maleEnglishVoice=v;return v;}
+function speakWord(word){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.7;u.pitch=1;u.volume=1;const v=getMaleEnglishVoice();if(v)u.voice=v;window.speechSynthesis.speak(u);}
+
+function wrapEnglishText(text,container){
+  if(!container)return;container.innerHTML='';if(!text)return;
+  const tempDiv=document.createElement('div');tempDiv.innerHTML=text;
+  function processNodes(node,target){
+    node.childNodes.forEach(child=>{
+      if(child.nodeType===Node.TEXT_NODE){
+        const words=child.textContent.split(' ');
+        words.forEach((word,idx)=>{
+          if(word.trim()===''){target.appendChild(document.createTextNode(' '));return;}
+          const span=document.createElement('span');span.className='word-en';span.textContent=word;
+          let pressTimer=null;
+          const startPress=()=>{pressTimer=setTimeout(()=>{speakWord(word.replace(/[^a-zA-Z]/g,''));span.classList.add('speaking');setTimeout(()=>span.classList.remove('speaking'),600);const hint=document.getElementById('speech-hint');hint.textContent=`🔊 ${word}`;hint.classList.add('show');setTimeout(()=>hint.classList.remove('show'),900);},800);};
+          const endPress=()=>{if(pressTimer){clearTimeout(pressTimer);pressTimer=null;}};
+          span.addEventListener('pointerdown',startPress);span.addEventListener('pointerup',endPress);span.addEventListener('pointerleave',endPress);
+          span.addEventListener('touchstart',startPress,{passive:true});span.addEventListener('touchend',endPress,{passive:true});
+          target.appendChild(span);
+          if(idx<words.length-1)target.appendChild(document.createTextNode(' '));
+        });
+      }else if(child.nodeType===Node.ELEMENT_NODE){
+        const clone=child.cloneNode(false);target.appendChild(clone);processNodes(child,clone);
+      }
+    });
+  }
+  processNodes(tempDiv,container);
+}
+
+/* ==================== PDF EXPORT SYSTEM ==================== */
+function escHtml(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function openPdfModalForSelected(){
+  const activeEls=document.querySelectorAll('#section-list .section-item.active');
+  if(activeEls.length===0){alert('اختار جزء واحد على الأقل لتحميله!');return;}
+  const idxs=Array.from(activeEls).map(el=>parseInt(el.dataset.idx));
+  openPdfModal(idxs);
+}
+
+function openPdfModal(sectionIndices){
+  if(pdfGenerating)return;
+  pdfTargetSections=sectionIndices.slice();
+  const totalQ=pdfTargetSections.reduce((sum,idx)=>sum+QUESTION_BANK[idx].questions.length,0);
+  const titleText=pdfTargetSections.length===1
+    ? QUESTION_BANK[pdfTargetSections[0]].name
+    : `عدد ${pdfTargetSections.length} أجزاء مختارة`;
+  document.getElementById('pdfModalTargetInfo').innerHTML=
+    `<b>المحتوى:</b> ${escHtml(titleText)}<br><b>إجمالي الأسئلة:</b> ${totalQ} سؤالاً`;
+  document.getElementById('pdfIncludeArabic').checked=state.showTranslation;
+  document.getElementById('pdfProgressWrap').classList.remove('show');
+  document.getElementById('pdfProgressFill').style.width='0%';
+  document.getElementById('btnDirectPdf').disabled=false;
+  document.getElementById('btnPrintPdf').disabled=false;
+  document.getElementById('pdfModal').classList.add('show');
+}
+
+function closePdfModal(){
+  if(pdfGenerating)return;
+  document.getElementById('pdfModal').classList.remove('show');
+}
+
+function getPdfOptions(){
+  const mode=(document.querySelector('input[name="pdfAnswerMode"]:checked')||{}).value||'solved';
+  const includeArabic=document.getElementById('pdfIncludeArabic').checked;
+  return {mode,includeArabic};
+}
+
+function buildPdfHeaderHtml(sectionName,totalQ,mode){
+  const modeLabel=mode==='solved'?'بنك أسئلة محلول بالإجابات والشرح':(mode==='exam_key'?'ورقة امتحان + مفتاح إجابة':'ورقة امتحان بدون إجابات');
+  return `<div class="pdf-doc-header">
+    <h2>Fundamentals of Nursing Procedures QBank</h2>
+    <div class="pdf-sec-name">${escHtml(sectionName)}</div>
+    <div class="pdf-meta">إجمالي الأسئلة: ${totalQ} | النمط: ${modeLabel} | Created by MR. YASSIN THARWAT</div>
+  </div>`;
+}
+
+function buildPdfQuestionHtml(q,displayNum,secLabel,opts){
+  const isSolved=(opts.mode==='solved');
+  const qIsTF=isTFQuestion(q);
+  let badges=`<span class="pdf-badge">${qIsTF?'True / False':'MCQ'}</span>`;
+  if(q.isNew)badges+=`<span class="pdf-badge new">جديد / Midterm</span>`;
+  const secTag=secLabel?`<span>${escHtml(secLabel)}</span>`:`<span>سؤال رقم ${displayNum}</span>`;
+
+  let html=`<div class="pdf-q-card">
+    <div class="pdf-q-top">${secTag}<div class="pdf-q-badges">${badges}</div></div>
+    <div class="pdf-q-en">${displayNum}. ${escHtml(q.en)}</div>`;
+  if(opts.includeArabic&&q.ar){
+    html+=`<div class="pdf-q-ar">${escHtml(q.ar)}</div>`;
+  }
+  html+=`<div class="pdf-opts">`;
+  q.options.forEach(o=>{
+    const cls=(isSolved&&o.correct)?'pdf-opt correct':'pdf-opt';
+    const mark=(isSolved&&o.correct)?' ✓':'';
+    html+=`<div class="${cls}">
+      <div class="pdf-opt-en">${escHtml(o.en)}${mark}</div>
+      ${(opts.includeArabic&&o.ar)?`<div class="pdf-opt-ar">${escHtml(o.ar)}</div>`:''}
+    </div>`;
+  });
+  html+=`</div>`;
+  if(isSolved&&q.explain_ar){
+    html+=`<div class="pdf-explain">💡 <b>التوضيح:</b> ${escHtml(q.explain_ar)}</div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function getShortAnswerLabel(q){
+  const idx=q.options.findIndex(o=>o.correct);
+  if(idx<0)return '-';
+  if(isTFQuestion(q))return q.options[idx].en==='True'?'True':'False';
+  return ['A','B','C','D'][idx]||String(idx+1);
+}
+
+function collectPdfItems(){
+  const items=[];
+  let globalNum=1;
+  const multi=pdfTargetSections.length>1;
+  pdfTargetSections.forEach(sIdx=>{
+    const sec=QUESTION_BANK[sIdx];
+    sec.questions.forEach(q=>{
+      items.push({q,num:multi?globalNum:q.num,secLabel:multi?sec.name:''});
+      globalNum++;
+    });
+  });
+  return items;
+}
+
+function getPdfFileName(){
+  if(pdfTargetSections.length===1){
+    const idx=pdfTargetSections[0];
+    const slug=QUESTION_BANK[idx].nameEn.replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+    return `Part_${idx+1}_${slug||'Nursing_QBank'}.pdf`;
+  }
+  return `Nursing_Procedures_QBank_${pdfTargetSections.length}_Parts.pdf`;
+}
+
+async function generateDirectPdf(){
+  if(typeof html2canvas==='undefined'||!window.jspdf||!window.jspdf.jsPDF){
+    alert('مكتبة إنشاء PDF المباشر غير متاحة بدون إنترنت. سيتم فتح نافذة الحفظ/الطباعة عبر المتصفح (تعمل أوفلاين وتدعم الحفظ كـ PDF).');
+    printAsPdf();
+    return;
+  }
+
+  const opts=getPdfOptions();
+  const items=collectPdfItems();
+  const titleName=pdfTargetSections.length===1
+    ? QUESTION_BANK[pdfTargetSections[0]].name
+    : pdfTargetSections.map(i=>QUESTION_BANK[i].name).join(' + ');
+
+  pdfGenerating=true;
+  document.getElementById('btnDirectPdf').disabled=true;
+  document.getElementById('btnPrintPdf').disabled=true;
+  const progWrap=document.getElementById('pdfProgressWrap');
+  const progText=document.getElementById('pdfProgressText');
+  const progFill=document.getElementById('pdfProgressFill');
+  progWrap.classList.add('show');
+  progText.textContent='جارٍ تنسيق الصفحات...';
+  progFill.style.width='5%';
+
+  const staging=document.createElement('div');
+  staging.style.cssText='position:fixed;left:-10000px;top:0;width:794px;background:#fff;z-index:-1;';
+  document.body.appendChild(staging);
+
+  try{
+    const MAX_CONTENT_H=1035;
+    const pagesHtml=[];
+    let currentBox=document.createElement('div');
+    currentBox.className='pdf-page-box';
+    staging.appendChild(currentBox);
+
+    currentBox.innerHTML=buildPdfHeaderHtml(titleName,items.length,opts.mode);
+
+    for(let i=0;i<items.length;i++){
+      const item=items[i];
+      const qHtml=buildPdfQuestionHtml(item.q,item.num,item.secLabel,opts);
+      const temp=document.createElement('div');
+      temp.innerHTML=qHtml;
+      const cardEl=temp.firstElementChild;
+      currentBox.appendChild(cardEl);
+
+      if(currentBox.scrollHeight>MAX_CONTENT_H&&currentBox.children.length>1){
+        currentBox.removeChild(cardEl);
+        pagesHtml.push(currentBox.innerHTML);
+        currentBox.innerHTML='';
+        currentBox.appendChild(cardEl);
+      }
+    }
+    if(currentBox.children.length>0){
+      pagesHtml.push(currentBox.innerHTML);
+    }
+
+    if(opts.mode==='exam_key'){
+      currentBox.innerHTML='<div class="pdf-key-title">مفتاح الإجابات الصحيحة (Answer Key)</div><div class="pdf-key-grid"></div>';
+      const grid=currentBox.querySelector('.pdf-key-grid');
+      for(let i=0;i<items.length;i++){
+        const kDiv=document.createElement('div');
+        kDiv.className='pdf-key-item';
+        kDiv.textContent=`${items[i].num}: ${getShortAnswerLabel(items[i].q)}`;
+        grid.appendChild(kDiv);
+        if(currentBox.scrollHeight>MAX_CONTENT_H){
+          grid.removeChild(kDiv);
+          pagesHtml.push(currentBox.innerHTML);
+          currentBox.innerHTML='<div class="pdf-key-title">مفتاح الإجابات (تابع)</div><div class="pdf-key-grid"></div>';
+          const newGrid=currentBox.querySelector('.pdf-key-grid');
+          newGrid.appendChild(kDiv);
+        }
+      }
+      if(currentBox.querySelector('.pdf-key-grid').children.length>0){
+        pagesHtml.push(currentBox.innerHTML);
+      }
+    }
+
+    const {jsPDF}=window.jspdf;
+    const pdf=new jsPDF({orientation:'p',unit:'mm',format:'a4'});
+    const totalPages=pagesHtml.length;
+
+    for(let p=0;p<totalPages;p++){
+      progText.textContent=`جارٍ إنشاء صفحة ${p+1} من ${totalPages}...`;
+      progFill.style.width=Math.round(((p+1)/totalPages)*95)+'%';
+
+      currentBox.innerHTML=pagesHtml[p]+`<div class="pdf-page-footer"><span>صفحة ${p+1} من ${totalPages}</span><span>Created by MR. YASSIN THARWAT</span></div>`;
+      await new Promise(r=>setTimeout(r,20));
+
+      const canvas=await html2canvas(currentBox,{scale:2,useCORS:true,backgroundColor:'#ffffff',logging:false,windowWidth:794});
+      const imgData=canvas.toDataURL('image/jpeg',0.92);
+      const imgW=210;
+      const imgH=Math.min(297,(canvas.height*imgW)/canvas.width);
+      if(p>0)pdf.addPage();
+      pdf.addImage(imgData,'JPEG',0,0,imgW,imgH);
+    }
+
+    progFill.style.width='100%';
+    progText.textContent='تم تجهيز الملف بنجاح! جارٍ التحميل...';
+    pdf.save(getPdfFileName());
+    setTimeout(()=>{
+      pdfGenerating=false;
+      closePdfModal();
+    },600);
+  }catch(err){
+    alert('حدث خطأ أثناء إنشاء الملف المباشر: '+err.message+'\nسيتم التحويل إلى خيار الطباعة/الحفظ عبر المتصفح.');
+    pdfGenerating=false;
+    document.getElementById('btnDirectPdf').disabled=false;
+    document.getElementById('btnPrintPdf').disabled=false;
+    document.getElementById('pdfProgressWrap').classList.remove('show');
+    printAsPdf();
+  }finally{
+    if(staging.parentNode)staging.parentNode.removeChild(staging);
+  }
+}
+
+function printAsPdf(){
+  const opts=getPdfOptions();
+  const items=collectPdfItems();
+  const titleName=pdfTargetSections.length===1
+    ? QUESTION_BANK[pdfTargetSections[0]].name
+    : pdfTargetSections.map(i=>QUESTION_BANK[i].name).join(' + ');
+
+  let html='<div class="pdf-page-box">';
+  html+=buildPdfHeaderHtml(titleName,items.length,opts.mode);
+  items.forEach(item=>{
+    html+=buildPdfQuestionHtml(item.q,item.num,item.secLabel,opts);
+  });
+  if(opts.mode==='exam_key'){
+    html+='<div class="pdf-key-title">مفتاح الإجابات الصحيحة (Answer Key)</div><div class="pdf-key-grid">';
+    items.forEach(item=>{
+      html+=`<div class="pdf-key-item">${item.num}: ${escHtml(getShortAnswerLabel(item.q))}</div>`;
+    });
+    html+='</div>';
+  }
+  html+='</div>';
+
+  document.getElementById('print-area').innerHTML=html;
+  document.getElementById('pdfModal').classList.remove('show');
+  setTimeout(()=>window.print(),150);
+}
+/* ==================== END PDF EXPORT SYSTEM ==================== */
+
+document.addEventListener('click',function(e){const btn=e.target.closest('.big-btn');if(!btn)return;const rect=btn.getBoundingClientRect();const ripple=document.createElement('span');ripple.className='ripple';const size=Math.max(rect.width,rect.height);ripple.style.width=ripple.style.height=size+'px';ripple.style.left=(e.clientX-rect.left-size/2)+'px';ripple.style.top=(e.clientY-rect.top-size/2)+'px';btn.appendChild(ripple);setTimeout(()=>ripple.remove(),500);});
+
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',enterApp);}else{enterApp();}
+</script>
+</body>
+</html>
